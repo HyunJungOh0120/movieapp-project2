@@ -1,6 +1,7 @@
 import React from 'react';
+//import classes from './MainPage.module.css';
 
-const MainPage = (props) => {
+const MainPage = () => {
   return <div></div>;
 };
 

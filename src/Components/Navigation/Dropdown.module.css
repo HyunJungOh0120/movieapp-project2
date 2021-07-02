@@ -1,0 +1,20 @@
+.dropDown {
+  background: #424242;
+  min-width: 5rem;
+  transition: all 0.5s ease;
+  padding: 1rem;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dropDown li {
+  clear: both;
+  width: 100%;
+  line-height: 1.6;
+}

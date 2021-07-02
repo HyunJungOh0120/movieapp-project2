@@ -1,0 +1,37 @@
+.searchForm {
+  display: flex;
+  border: none;
+  justify-content: space-between;
+}
+
+.searchForm:focus-within {
+  background: rgba(238, 231, 130, 0.151);
+}
+
+.searchForm:hover,
+.searchForm:focus,
+.searchForm:focus-within {
+  border: 1px solid white;
+  background: rgb(56, 56, 56);
+  padding-left: 1rem;
+}
+
+.searchForm:hover .searchInput,
+.searchForm:focus .searchInput,
+.searchForm:focus-within .searchInput {
+  width: 30rem;
+}
+
+.searchInput {
+  padding: 0.8rem 0.8rem 0.8rem 0;
+  background: transparent;
+  border: none;
+  color: white;
+  width: 0rem;
+  transition: all 0.4s ease;
+}
+
+.searchBtn {
+  font-size: 2rem;
+  padding-right: 1rem;
+}
