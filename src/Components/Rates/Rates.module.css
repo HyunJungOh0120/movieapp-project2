@@ -1,0 +1,11 @@
+.rates {
+  display: flex;
+}
+
+.star {
+  font-size: 1.4rem;
+}
+.ratedStar {
+  composes: star;
+  color: yellow;
+}

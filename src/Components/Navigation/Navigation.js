@@ -18,7 +18,7 @@ const Navigation = () => {
   return (
     <div role="navigation" className={styles.nav}>
       <NavLink to="/browse" activeClassName={styles.active}>
-        <span className={styles.nav__logo}>🍿</span>
+        <span className={styles.logo}>🍿</span>
       </NavLink>
 
       <ul className={styles.main__nav}>

@@ -1,8 +1,16 @@
 import React from 'react';
-//import classes from './MainPage.module.css';
+//import styles from './MainPage.module.css';
+import TvPopular from '../../Data/TvPopular';
+import BillBoard from '../BillBoard/BillBoard';
+
+const { results: tvPopular } = TvPopular;
 
 const MainPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <BillBoard billBoard={tvPopular[0]} />
+    </div>
+  );
 };
 
 export default MainPage;

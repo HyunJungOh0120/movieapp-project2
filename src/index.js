@@ -5,6 +5,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
 
+import './fontawesome';
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
