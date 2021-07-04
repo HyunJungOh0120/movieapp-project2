@@ -3,17 +3,21 @@ import React from 'react';
 import styles from './Genre.module.css';
 
 const Genre = ({ totalGenres, billBoardGenres }) => {
-  const currGenreArray = totalGenres.filter((genre) =>
-    billBoardGenres.includes(genre.id)
-  );
+  const genreText = () => {
+    const currGenreArray = totalGenres.filter((genre) =>
+      billBoardGenres.includes(genre.id)
+    );
+    return currGenreArray.map((genre) => (
+      <p className={styles.genre} key={genre.id}>
+        {genre.name}
+      </p>
+    ));
+  };
 
   return (
     <div className={styles.genreBox}>
-      {currGenreArray.map((genre) => (
-        <p className={styles.genre} key={genre.id}>
-          {genre.name}
-        </p>
-      ))}
+      {totalGenres && genreText()}
+      {!totalGenres && <p>Loading...</p>}
     </div>
   );
 };

@@ -43,7 +43,7 @@ const Rates = ({ rate }) => {
           );
         }
       })}
-      <span className={styles.rateText}>{rate}</span>
+      <span className={styles.rateText}>{rate.toFixed(1)}</span>
     </div>
   );
 };

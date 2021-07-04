@@ -1,4 +1,4 @@
-// https://api.themoviedb.org/3/tv/{tv.id}?api_key={process.env.TMDB_API_KEY}&append_to_response=videos
+// https://api.themoviedb.org/3/tv/{tv.id}?api_key={process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos
 
 const TmdbTvDetail = {
   backdrop_path: '/suopoADq0k8YZr4dQXcU6pToj6s.jpg',

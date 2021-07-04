@@ -6,6 +6,7 @@ import styles from './Video.module.css';
 
 const Video = (props) => {
   const className = props.isClicked ? styles.container : styles.hidden;
+
   return (
     <div className={className}>
       <Button
@@ -25,7 +26,6 @@ const Video = (props) => {
         title="YouTube video about trailer"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
         allowFullScreen
-        loading="lazy"
       ></iframe>
     </div>
   );
