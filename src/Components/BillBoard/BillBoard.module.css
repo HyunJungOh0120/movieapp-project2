@@ -8,6 +8,9 @@
     rgba(0, 0, 0, 1) 70%
   );
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imgBox {

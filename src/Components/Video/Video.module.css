@@ -1,0 +1,39 @@
+.container {
+  /* overflow: hidden; */
+  position: relative;
+  width: 960px;
+  z-index: 100;
+}
+
+.container::after {
+  content: '';
+  display: block;
+  padding-top: 56.25%;
+}
+
+.container iframe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-width: 200px;
+  min-height: 200px;
+  background: transparent;
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.exitBtn {
+  position: absolute;
+  right: 0;
+  top: -4rem;
+  transform: rotate(90);
+  background: cadetblue;
+  font-size: 2rem;
+  z-index: 101;
+  width: 4rem;
+  height: 4rem;
+}
