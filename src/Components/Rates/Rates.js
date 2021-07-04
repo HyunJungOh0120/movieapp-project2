@@ -11,7 +11,6 @@ const Rates = ({ rate }) => {
   if (!rate) return <></>;
 
   const { calcRate, rest } = getRate(rate, standard);
-  console.log(calcRate, rest); // ex) 4 , 1
 
   const calcRateArr = [];
   for (let i = 0; i < calcRate; i++) {

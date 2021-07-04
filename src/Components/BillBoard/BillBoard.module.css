@@ -53,12 +53,6 @@
   font-size: 2rem;
 }
 
-.genre {
-  display: inline-block;
-  margin-right: 2rem;
-}
-
-.genre:not(:last-child)::after {
-  content: '|';
-  margin-left: 2rem;
+.btnBox {
+  display: flex;
 }

@@ -7,13 +7,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faSearch,
   faStar as faStarSolid,
+  faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 
 // REGULAR
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 
-library.add(faSearch, faStarRegular, faStarSolid);
+library.add(faSearch, faStarRegular, faStarSolid, faPlay);
 
 export default function registerIcons() {
-  library.add(faStarSolid, faStarRegular);
+  library.add(faStarSolid, faStarRegular, faPlay);
 }
