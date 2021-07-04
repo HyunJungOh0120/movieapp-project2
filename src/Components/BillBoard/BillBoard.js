@@ -1,12 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TvGenreList from '../../Data/TvGenreList';
 // HELPERS
 import { IMG_ORIGINAL_SIZE, IMG_URL } from '../../Helpers/Helpers';
-import Rates from '../Rates/Rates';
+// COMPONENTS
 import Genre from '../Genre/Genre';
+import Rates from '../Rates/Rates';
 import styles from './BillBoard.module.css';
+import Buttons from './Buttons';
 
 const BillBoard = ({ billBoard }) => {
   const imgUrl = `${IMG_URL}${IMG_ORIGINAL_SIZE}${billBoard.backdrop_path}`;
@@ -28,12 +29,8 @@ const BillBoard = ({ billBoard }) => {
           <Rates rate={billBoard.vote_average} />
 
           <Genre totalGenres={genres} billBoardGenres={billBoard.genre_ids} />
-          <div className={styles.btnBox}>
-            <button>
-              <FontAwesomeIcon icon={['fas', 'play']} />
-            </button>
-            <button></button>
-          </div>
+
+          <Buttons billBoardId={billBoard.id} />
         </div>
       </div>
     </div>

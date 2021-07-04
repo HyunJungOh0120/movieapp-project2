@@ -8,13 +8,14 @@ import {
   faSearch,
   faStar as faStarSolid,
   faPlay,
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
 // REGULAR
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 
-library.add(faSearch, faStarRegular, faStarSolid, faPlay);
+library.add(faSearch, faStarRegular, faStarSolid, faPlay, faPlus);
 
 export default function registerIcons() {
-  library.add(faStarSolid, faStarRegular, faPlay);
+  library.add(faStarSolid, faStarRegular, faPlay, faPlus);
 }

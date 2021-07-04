@@ -8,7 +8,7 @@ const { results: tvPopular } = TvPopular;
 const MainPage = () => {
   return (
     <div>
-      <BillBoard billBoard={tvPopular[0]} />
+      <BillBoard billBoard={tvPopular[17]} />
     </div>
   );
 };
