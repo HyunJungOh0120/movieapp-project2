@@ -1,0 +1,33 @@
+.paginator {
+  display: flex;
+  height: 100%;
+
+  position: relative;
+}
+
+.pageBtn {
+  background: none;
+  border: none;
+  font-size: 4rem;
+  position: absolute;
+  z-index: 103;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pageBtn:hover,
+.pageBtn:active {
+  background: none;
+
+  transform: translateY(-50%);
+}
+
+.leftBtn {
+  composes: pageBtn;
+  left: -4rem;
+}
+
+.rightBtn {
+  composes: pageBtn;
+  right: -4rem;
+}

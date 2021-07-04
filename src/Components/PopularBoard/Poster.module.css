@@ -1,0 +1,24 @@
+.poster {
+  width: 20rem;
+  position: relative;
+  flex-wrap: 1;
+  margin: 0 1rem;
+}
+
+.poster img {
+  position: absolute;
+  background-position: center center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0.7rem;
+  box-shadow: 0 0 29px 3px var(--main-black);
+  transition: transform 0.3s ease;
+}
+
+.poster img:hover {
+  transform: scale(1.2);
+}

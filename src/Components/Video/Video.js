@@ -22,7 +22,7 @@ const Video = (props) => {
         type="text/html"
         width="960"
         height="540"
-        src={`https://www.youtube-nocookie.com/embed/${props.videoKey}?`}
+        src={`https://www.youtube-nocookie.com/embed/${props.videoKey}?fs=0&modestbranding=1&playsinline=1`}
         title="YouTube video about trailer"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
         allowFullScreen

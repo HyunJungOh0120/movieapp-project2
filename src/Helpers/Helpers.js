@@ -10,3 +10,5 @@ export const getRate = (rate, standard) => {
 };
 
 export const billBoardRateStandard = 5;
+
+export const CONTENTPERPAGE = 5;

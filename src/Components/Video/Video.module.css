@@ -19,6 +19,7 @@
   min-height: 200px;
   background: transparent;
   border: none;
+  box-shadow: 0 0 120px 90px rgba(99, 99, 99, 0.733);
 }
 
 .hidden {
@@ -27,12 +28,18 @@
 
 .exitBtn {
   position: absolute;
-  right: 0;
-  top: -4rem;
+  right: 1.4rem;
+  top: 1.2rem;
   transform: rotate(90);
-  background: cadetblue;
-  font-size: 2rem;
+  background: rgb(122, 15, 42);
+  font-size: 3rem;
   z-index: 101;
-  width: 4rem;
-  height: 4rem;
+  border-radius: 8px;
+  width: 6.2rem;
+  height: 6.2rem;
+}
+
+.exitBtn:active,
+.exitBtn:hover {
+  background: crimson;
 }

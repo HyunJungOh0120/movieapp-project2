@@ -15,7 +15,11 @@ const Buttons = (props) => {
       >
         <FontAwesomeIcon icon={['fas', 'play']} />
       </Button>
-      <Button onClick={props.onAddHandler} className={styles.clickBtn}>
+      <Button
+        onClick={props.onAddHandler}
+        className={styles.clickBtn}
+        disabled={props.disabled}
+      >
         <FontAwesomeIcon icon={['fas', 'plus']} size="lg" />
       </Button>
     </div>
