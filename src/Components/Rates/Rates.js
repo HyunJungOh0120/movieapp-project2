@@ -43,6 +43,7 @@ const Rates = ({ rate }) => {
           );
         }
       })}
+      <span className={styles.rateText}>{rate}</span>
     </div>
   );
 };

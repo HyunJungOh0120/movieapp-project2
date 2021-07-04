@@ -1,6 +1,5 @@
 .container {
-  /* overflow: hidden; */
-  position: relative;
+  position: absolute;
   width: 960px;
   z-index: 100;
 }

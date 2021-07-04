@@ -4,8 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  background-color: #1f1f1f00;
+  color: var(--beigeWhite);
+
   font-size: 1.6rem;
   position: absolute;
   top: 0;
@@ -26,13 +26,13 @@
   height: 100%;
 }
 .nav__link {
-  color: orange;
+  color: var(--orange);
   position: relative;
   margin-left: 6rem;
   padding: 1rem;
-  height: 100%;
-  transition: all 0.5s ease;
-
+  height: 90%;
+  transition: all 0.2s ease;
+  width: var(--nav-link-width);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,8 +47,13 @@
 
 .nav__link:hover span,
 .nav__link:focus-within span {
-  font-size: 2rem;
-  color: bisque;
+  font-size: 1.8rem;
+  color: var(--main-black);
+}
+
+.nav__link:hover,
+.nav__link:focus-within {
+  background-color: var(--orange);
 }
 
 .nav__link:hover > ul,

@@ -1,11 +1,19 @@
 .rates {
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .star {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  margin-right: 0.6rem;
 }
 .ratedStar {
   composes: star;
-  color: yellow;
+  color: var(--orange);
+}
+
+.rateText {
+  color: var(--orange);
+  font-size: 2.3rem;
 }

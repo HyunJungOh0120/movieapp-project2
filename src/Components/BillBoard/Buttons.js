@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-
 // UI
 import Button from '../UI/Button/Button';
 import styles from './Buttons.module.css';
@@ -9,10 +8,10 @@ import styles from './Buttons.module.css';
 const Buttons = (props) => {
   return (
     <div className={styles.btnBox}>
-      <Button onClick={props.onWatchHandler}>
+      <Button onClick={props.onWatchHandler} className={styles.clickBtn}>
         <FontAwesomeIcon icon={['fas', 'play']} />
       </Button>
-      <Button onClick={props.onAddHandler}>
+      <Button onClick={props.onAddHandler} className={styles.clickBtn}>
         <FontAwesomeIcon icon={['fas', 'plus']} size="lg" />
       </Button>
     </div>

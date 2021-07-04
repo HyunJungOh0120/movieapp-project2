@@ -1,0 +1,20 @@
+:root {
+  --beigeWhite: rgb(245, 245, 245);
+  --main-black: #1f1f1f;
+  --billBoard-background-gradient: radial-gradient(
+    circle,
+    rgba(54, 54, 54, 0.301) 0%,
+    rgba(0, 0, 0, 1) 70%
+  );
+  --orange: rgb(255, 165, 0);
+
+  --buttonBorder: rgb(54, 43, 56);
+  --buttonBackground: rgb(104, 96, 105);
+  --buttonColor: white;
+  --buttonActiveBackground: rgb(52, 61, 61);
+
+  --navSearchFormFocus: rgba(56, 56, 56, 1);
+  --dropDownBackground: rgb(37, 37, 37);
+
+  --nav-link-width: 13rem;
+}

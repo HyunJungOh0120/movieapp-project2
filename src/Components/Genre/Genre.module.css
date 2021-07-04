@@ -4,7 +4,7 @@
 
 .genre {
   display: inline-block;
-  margin-right: 2rem;
+  margin: 2rem 2rem 2rem 0;
 }
 
 .genre:not(:last-child)::after {

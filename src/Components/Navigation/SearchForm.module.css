@@ -4,15 +4,11 @@
   justify-content: space-between;
 }
 
-.searchForm:focus-within {
-  background: rgba(238, 231, 130, 0.151);
-}
-
 .searchForm:hover,
 .searchForm:focus,
 .searchForm:focus-within {
   border: 1px solid white;
-  background: rgb(56, 56, 56);
+  background: var(--navSearchFormFocus);
   padding-left: 1rem;
 }
 
