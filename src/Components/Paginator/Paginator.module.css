@@ -25,7 +25,6 @@
 .pageBtn:hover,
 .pageBtn:active {
   background: none;
-
   transform: translateY(-50%);
 }
 

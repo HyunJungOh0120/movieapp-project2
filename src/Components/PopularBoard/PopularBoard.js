@@ -11,6 +11,7 @@ const PopularBoard = ({ popularList, mediaType }) => {
         dataArr={popularList}
         mediaType={mediaType}
         category="Popular"
+        size="big"
       />
     </div>
   );

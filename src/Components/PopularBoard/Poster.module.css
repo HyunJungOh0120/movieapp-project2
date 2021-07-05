@@ -2,7 +2,6 @@
   width: 20rem;
   position: relative;
   flex-wrap: 1;
-  /* margin: 0 1rem; */
 }
 
 .poster img {
@@ -19,6 +18,22 @@
   transition: transform 0.3s ease;
 }
 
+.bigPoster {
+  composes: poster;
+}
+
 .poster img:hover {
   transform: scale(1.12);
+}
+
+.smallPoster {
+  composes: poster;
+  background: yellowgreen;
+  width: 17rem;
+}
+
+.smallPoster img {
+  width: 20rem;
+  height: 100%;
+  object-fit: cover;
 }
