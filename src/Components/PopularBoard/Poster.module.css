@@ -2,7 +2,7 @@
   width: 20rem;
   position: relative;
   flex-wrap: 1;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
 }
 
 .poster img {
@@ -20,5 +20,5 @@
 }
 
 .poster img:hover {
-  transform: scale(1.2);
+  transform: scale(1.12);
 }

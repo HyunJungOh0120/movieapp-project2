@@ -1,8 +1,15 @@
 .paginator {
   display: flex;
+  justify-content: space-between;
   height: 100%;
-
+  width: 70%;
   position: relative;
+}
+
+.paginator h2 {
+  position: absolute;
+  top: -3rem;
+  left: 0rem;
 }
 
 .pageBtn {

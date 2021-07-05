@@ -8,7 +8,7 @@ import styles from './Paginator.module.css';
 
 const contentPerPage = CONTENTPERPAGE;
 
-const Paginator = ({ dataArr, mediaType }) => {
+const Paginator = ({ dataArr, mediaType, category }) => {
   const [currPage, setCurrPage] = useState(1);
 
   const currContent = dataArr.slice(
@@ -38,6 +38,7 @@ const Paginator = ({ dataArr, mediaType }) => {
 
   return (
     <div className={styles.paginator}>
+      <h2>{category}</h2>
       <Button className={styles.leftBtn} onClick={leftClickHandler}>
         {currPage > 1 && <FontAwesomeIcon icon={['fas', 'chevron-left']} />}
       </Button>
@@ -63,6 +64,7 @@ const Paginator = ({ dataArr, mediaType }) => {
 Paginator.propTypes = {
   dataArr: PropTypes.array,
   mediaType: PropTypes.string,
+  category: PropTypes.string,
 };
 
 export default Paginator;
