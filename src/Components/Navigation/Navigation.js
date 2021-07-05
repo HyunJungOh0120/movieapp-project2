@@ -1,14 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-import Dropdown from './Dropdown';
-import SearchForm from './SearchForm';
-
+import { Link } from 'react-router-dom';
 import MovieGenreList from '../../Data/MovieGenreList';
 import TvGenreList from '../../Data/TvGenreList';
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Dropdown from './Dropdown';
 import styles from './Navigation.module.css';
+import SearchForm from './SearchForm';
 
 const Navigation = () => {
   const { genres: movieGenres } = MovieGenreList;
@@ -17,31 +13,31 @@ const Navigation = () => {
 
   return (
     <div role="navigation" className={styles.nav}>
-      <NavLink to="/browse" activeClassName={styles.active}>
+      <Link to="/browse">
         <span className={styles.logo}>🍿</span>
-      </NavLink>
+      </Link>
 
       <ul className={styles.main__nav}>
         <li className="nav__menu"></li>
 
         <li className={styles.nav__link}>
-          <NavLink to="/browse/" activeClassName={styles.active}>
+          <Link to="/browse">
             <span>Home</span>
-          </NavLink>
+          </Link>
         </li>
 
         <li className={styles.nav__link}>
-          <NavLink to="/browse/movie" activeClassName={styles.active}>
+          <Link to="/browse/movie">
             <span>Movies</span>
-          </NavLink>
-          <Dropdown genres={movieGenres} />
+          </Link>
+          <Dropdown genres={movieGenres} mediaType="movie" />
         </li>
 
         <li className={styles.nav__link}>
-          <NavLink to="/browse/tv" activeClassName={styles.active}>
+          <Link to="/browse/tv">
             <span> Tv Show</span>
-          </NavLink>
-          <Dropdown genres={tvGenres} />
+          </Link>
+          <Dropdown genres={tvGenres} mediaType="tv" />
         </li>
       </ul>
 
@@ -54,7 +50,6 @@ const Navigation = () => {
 
         <li className={styles.nav__element}>
           <div className="loginBox">
-            {/* <NavLink to=""></NavLink> */}
             <button>Login</button>
           </div>
         </li>

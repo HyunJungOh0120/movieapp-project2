@@ -1,15 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Dropdown.module.css';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from './Dropdown.module.css';
 
-const Dropdown = ({ genres }) => {
+const Dropdown = ({ genres, mediaType }) => {
   return (
     <ul className={styles.dropDown} aria-level="submenu">
       {genres.map((genre) => (
         <li key={genre.id}>
           <NavLink
-            to={`/browse/movie/genre/${genre.name}`}
+            to={`/${mediaType}/genre/${genre.name}`}
             activeClassName="active"
           >
             {genre.name}
@@ -22,6 +22,7 @@ const Dropdown = ({ genres }) => {
 
 Dropdown.propTypes = {
   genres: PropTypes.array,
+  mediaType: PropTypes.string,
 };
 
 export default Dropdown;

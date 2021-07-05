@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ListBoard from '../ListBoard/ListBoard';
 import MainBoard from '../MainBoard/MainBoard';
-//import styles from './MainPage.module.css';
 
 const MainPage = () => {
   const [status, setStatus] = useState('idle');
@@ -42,8 +41,13 @@ const MainPage = () => {
       {status === 'loading' && <p>Loading...</p>}
       {status === 'resolved' && (
         <>
-          <MainBoard data={tvPopular} />
-          <ListBoard data={moviePopular} />
+          <MainBoard data={tvPopular} mediaType="tv" />
+          <ListBoard
+            data={moviePopular}
+            // data2={movieNowPlaying}
+            // data3={tvOnAir}
+          />
+          )
         </>
       )}
     </div>

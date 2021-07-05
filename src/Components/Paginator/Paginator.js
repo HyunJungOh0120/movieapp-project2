@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { CONTENTPERPAGE } from '../../Helpers/Helpers';
-import Poster from '../PopularBoard/Poster';
+import Poster from '../Poster/Poster';
 import Button from '../UI/Button/Button';
 import styles from './Paginator.module.css';
 
@@ -42,27 +42,29 @@ const Paginator = ({ dataArr, mediaType, category, size }) => {
   return (
     <div className={styles.paginator}>
       <h2>{category}</h2>
-      <Button className={styles.leftBtn} onClick={leftClickHandler}>
-        {currPage > 1 && <FontAwesomeIcon icon={['fas', 'chevron-left']} />}
-      </Button>
+      <div className={styles.row}>
+        <Button className={styles.leftBtn} onClick={leftClickHandler}>
+          {currPage > 1 && <FontAwesomeIcon icon={['fas', 'chevron-left']} />}
+        </Button>
 
-      {currContent.map((content) => {
-        const title = mediaType === 'tv' ? content.name : content.title;
-        return (
-          <Poster
-            key={content.id}
-            posterPath={posterPath(content)}
-            title={title}
-            size={size}
-          />
-        );
-      })}
+        {currContent.map((content) => {
+          const title = mediaType === 'tv' ? content.name : content.title;
+          return (
+            <Poster
+              key={content.id}
+              posterPath={posterPath(content)}
+              title={title}
+              size={size}
+            />
+          );
+        })}
 
-      <Button className={styles.rightBtn} onClick={rightClickHandler}>
-        {currPage < pages && (
-          <FontAwesomeIcon icon={['fas', 'chevron-right']} />
-        )}
-      </Button>
+        <Button className={styles.rightBtn} onClick={rightClickHandler}>
+          {currPage < pages && (
+            <FontAwesomeIcon icon={['fas', 'chevron-right']} />
+          )}
+        </Button>
+      </div>
     </div>
   );
 };

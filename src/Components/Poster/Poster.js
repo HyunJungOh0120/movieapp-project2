@@ -6,7 +6,7 @@ import styles from './Poster.module.css';
 const Poster = ({ posterPath, title, size = 'small' }) => {
   const imgUrl = `${IMG_URL}${IMG_W500_SIZE}${posterPath}`;
 
-  const className = size === 'big' ? styles.bigPoster : styles.smallPoster;
+  const className = size === 'big' ? styles.poster : styles.smallPoster;
 
   return (
     <div className={className}>
