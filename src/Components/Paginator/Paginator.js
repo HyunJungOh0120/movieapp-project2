@@ -15,8 +15,6 @@ const Paginator = ({ dataArr, mediaType, category, size }) => {
     contentPerPage * currPage - contentPerPage,
     contentPerPage * currPage
   );
-  console.log(currPage);
-  console.log(currContent);
 
   const pages = Math.ceil(dataArr.length / contentPerPage);
 

@@ -1,24 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import MoviePopular from '../../Data/MoviePopular';
 import ListBoard from '../ListBoard/ListBoard';
 import MainBoard from '../MainBoard/MainBoard';
 //import styles from './MainPage.module.css';
 
-const { results: moviePopular } = MoviePopular;
 const MainPage = () => {
-  const [status, setStatus] = useState('loading');
+  const [status, setStatus] = useState('idle');
   const [tvPopular, setTvPopular] = useState([]);
+  const [moviePopular, setMoviePopular] = useState([]);
 
   useEffect(() => {
-    const getTvPopular = async () => {
+    const getPopulars = async () => {
+      setStatus('loading');
       const tvPopularUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
-      const res = await fetch(tvPopularUrl);
-      const data = await res.json();
-      const { results } = data;
+      const moviePopularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
-      setTvPopular(results);
+      Promise.all([fetch(tvPopularUrl), fetch(moviePopularUrl)])
+        .then((responses) => {
+          return Promise.all(
+            responses.map((response) => {
+              if (!response.ok) throw new Error('HTTP wrong');
+              return response.json();
+            })
+          );
+        })
+        .then((data) => {
+          setTvPopular(data[0].results);
+          setMoviePopular(data[1].results);
+          setStatus('resolved');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
-    getTvPopular();
+    getPopulars();
     return () => {};
   }, []);
 
