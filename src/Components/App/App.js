@@ -14,9 +14,7 @@ function App() {
 
       <Switch>
         <Route exact path="/browse" component={MainPage} />
-
         <Route path="/browse/movie" component={MoviePage} />
-
         <Route path="/browse/tv" component={TvPage} />
       </Switch>
     </div>

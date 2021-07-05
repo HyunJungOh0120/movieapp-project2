@@ -21,10 +21,14 @@ const BillBoard = ({ billBoard, mediaType }) => {
 
   useEffect(() => {
     const getGenres = async () => {
-      const genreUrl = `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
-      const res = await fetch(genreUrl);
-      const { genres } = await res.json();
-      setGenres(genres);
+      try {
+        const genreUrl = `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+        const res = await fetch(genreUrl);
+        const { genres } = await res.json();
+        setGenres(genres);
+      } catch (error) {
+        console.log('💥', error);
+      }
     };
     getGenres();
 
@@ -34,13 +38,17 @@ const BillBoard = ({ billBoard, mediaType }) => {
   useEffect(() => {
     const id = billBoard.id;
     const getInfo = async () => {
-      const infoUrl = ` https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
-      const res = await fetch(infoUrl);
-      const data = await res.json();
-      console.log(data.videos.results[0]);
-      setVideoKey(data.videos.results[0].key);
-      // const youtubeUrl = `https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
-      // const youtubeRes = await fetch(youtubeUrl);
+      try {
+        const infoUrl = ` https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
+        const res = await fetch(infoUrl);
+        const data = await res.json();
+        console.log(data.videos.results[0]);
+        setVideoKey(data.videos.results[0].key);
+        // const youtubeUrl = `https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
+        // const youtubeRes = await fetch(youtubeUrl);
+      } catch (error) {
+        console.log('💥', error);
+      }
     };
     getInfo();
     return () => {};

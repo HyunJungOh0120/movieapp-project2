@@ -1,22 +1,37 @@
-import React from 'react';
-import TvPopular from '../../Data/TvPopular';
-import BillBoard from '../BillBoard/BillBoard';
-import Paginator from '../Paginator/Paginator';
-import PopularBoard from '../PopularBoard/PopularBoard';
-import styles from './MainPage.module.css';
+import React, { useEffect, useState } from 'react';
+import MoviePopular from '../../Data/MoviePopular';
+import ListBoard from '../ListBoard/ListBoard';
+import MainBoard from '../MainBoard/MainBoard';
+//import styles from './MainPage.module.css';
 
-const { results: tvPopular } = TvPopular;
-
+const { results: moviePopular } = MoviePopular;
 const MainPage = () => {
+  const [status, setStatus] = useState('loading');
+  const [tvPopular, setTvPopular] = useState([]);
+
+  useEffect(() => {
+    const getTvPopular = async () => {
+      const tvPopularUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+      const res = await fetch(tvPopularUrl);
+      const data = await res.json();
+      const { results } = data;
+
+      setTvPopular(results);
+    };
+    getTvPopular();
+    return () => {};
+  }, []);
+
   return (
     <div>
-      <div className={styles.mainBoard}>
-        <BillBoard billBoard={tvPopular[11]} mediaType="tv" />
-        <PopularBoard popularList={tvPopular} mediaType="tv" />
-      </div>
-      <div>
-        <Paginator />
-      </div>
+      {status === 'idle' && <p>Idle</p>}
+      {status === 'loading' && <p>Loading...</p>}
+      {status === 'resolved' && (
+        <>
+          <MainBoard data={tvPopular} />
+          <ListBoard data={moviePopular} />
+        </>
+      )}
     </div>
   );
 };

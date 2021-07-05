@@ -1,6 +1,7 @@
 .paginator {
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: center;
   height: 100%;
   width: 70%;
   position: relative;

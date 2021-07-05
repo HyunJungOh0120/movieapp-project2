@@ -1,7 +1,9 @@
 .poster {
   width: 20rem;
+  height: 100%;
   position: relative;
   flex-wrap: 1;
+  margin: 0 0.6rem;
 }
 
 .poster img {
@@ -29,7 +31,7 @@
 .smallPoster {
   composes: poster;
   background: yellowgreen;
-  width: 17rem;
+  width: 20rem;
 }
 
 .smallPoster img {

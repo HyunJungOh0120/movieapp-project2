@@ -1,4 +1,4 @@
-// https://api.themoviedb.org/3/tv/popular?api_key={process.env.TMDB_API_KEY}
+// https://api.themoviedb.org/3/tv/popular?api_key={process.env.REACT_APP_TMDB_API_KEY}
 
 const TvPopular = {
   page: 1,

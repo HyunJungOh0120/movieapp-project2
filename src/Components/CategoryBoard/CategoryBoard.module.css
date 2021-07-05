@@ -1,11 +1,9 @@
-.popularBoard {
+.categoryBoard {
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 100%;
-  height: 30rem;
-
-  position: absolute;
-  bottom: -2rem;
+  height: 13rem;
+  margin-top: 6rem;
 }
