@@ -16,24 +16,23 @@ const movieReducer = (state, action) => {
     case actions.GET_POPULAR:
       return { ...state, moviePopular: action.payload.value };
 
-    case actions.GET_LIST:
-      const movieArr = {
+    case actions.GET_LIST: {
+      const listObj = {
         dataArr: action.payload.value,
         title: action.payload.title,
       };
-      return { ...state, list: [...state.list, movieArr] };
+      return { ...state, movielist: [...state.movielist, listObj] };
+    }
     default:
       return state;
   }
 };
 
-//TODO
-
 const MoviePage = () => {
   const [movieState, movieDispatch] = useReducer(movieReducer, {
     status: 'idle',
     moviePopular: [],
-    list: [],
+    movielist: [],
   });
 
   const getDiscoverUrl = (query, page = 1) => {
@@ -80,6 +79,13 @@ const MoviePage = () => {
     getMoviePopular();
     return () => {};
   }, []);
+
+  //TODO change the listboard using map. take the data array.
+  // if this is done, all done.
+  // then work with form. for movie, tv.
+  // then detail page
+
+  console.log(movieState.movielist);
 
   return (
     <div>
