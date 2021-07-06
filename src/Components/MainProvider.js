@@ -10,6 +10,9 @@ import {
 
 const MainContext = createContext();
 
+const setMediaType = (list, mediaType) => {
+  list.forEach((el) => (el.mediaType = mediaType));
+};
 function MainProvider({ children }) {
   const [tvGenres, setTvGenres] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
@@ -20,14 +23,14 @@ function MainProvider({ children }) {
   const value = { tvGenres, movieGenres, tvPopulars, moviePopulars, status };
 
   useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
-
     const getInitialData = async () => {
       try {
         setStatus('loading');
         const urls = [tvGenreUrl, movieGenreUrl, moviePopularUrl, tvPopularUrl];
-        const data = await Promise.all(urls.map((url) => getJSON(url, signal)));
+        const data = await Promise.all(urls.map((url) => getJSON(url)));
+
+        setMediaType(data[2].results, 'movie');
+        setMediaType(data[3].results, 'tv');
 
         setTvGenres(data[0].genres);
         setMovieGenres(data[1].genres);
@@ -41,12 +44,6 @@ function MainProvider({ children }) {
       }
     };
     getInitialData();
-
-    return () => {
-      setTimeout(() => {
-        controller.abort(), 3000;
-      });
-    };
   }, []);
 
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;

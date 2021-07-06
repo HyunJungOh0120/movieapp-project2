@@ -11,19 +11,14 @@ const setInfo = (Results, Genres, Indexes, mediaType) => {
 
     return { genre: Genres[Indexes[i]], list: results };
   });
-  // Results [[],[],[]]
-  // Indexes [3, 6, 7]
-  // Genres  [ {id,name} ]    genre:Genres[index].name list:results
-
-  // [{genre:ss, list:Array(20)}, ...]
 };
 
 const MainPage = () => {
   const { moviePopulars, tvPopulars, status, tvGenres, movieGenres } =
     useMain();
   const [listStatus, setListStatus] = useState('idle');
-  const [tvLists, setTvLists] = useState({ lists: [] });
-  const [movieLists, setMovieLists] = useState({ lists: [] });
+  const [tvLists, setTvLists] = useState([]);
+  const [movieLists, setMovieLists] = useState([]);
 
   //{id, name}
 
@@ -31,8 +26,6 @@ const MainPage = () => {
     // 3 each
     const randomTvGenresIndexes = get3RandomNums(tvGenres); // index [1,3,6] genre[1].name
     const randomMovieGenresIndexes = get3RandomNums(movieGenres); // [2,4,8]
-    const controller = new AbortController();
-    const { signal } = controller;
 
     const getLists = async () => {
       try {
@@ -45,30 +38,27 @@ const MainPage = () => {
         ); //[url,url,url]
 
         const tvData = await Promise.all([
-          ...randomTvUrls.map((url) => getJSON(url, { signal })),
+          ...randomTvUrls.map((url) => getJSON(url)),
         ]);
         const movieData = await Promise.all([
-          ...randomMovieUrls.map((url) => getJSON(url, { signal })),
+          ...randomMovieUrls.map((url) => getJSON(url)),
         ]);
 
-        const tvResults = await tvData.map((data) => data.results);
-        const movieResults = await movieData.map((data) => data.results);
+        const tvResults = tvData.map((data) => data.results);
+        const movieResults = movieData.map((data) => data.results);
 
         setTvLists(setInfo(tvResults, tvGenres, randomTvGenresIndexes, 'tv'));
         setMovieLists(
           setInfo(movieResults, movieGenres, randomMovieGenresIndexes, 'movie')
         );
-
         setListStatus('resolved');
       } catch (error) {
         console.log(error);
       }
     };
     getLists();
-  }, []);
+  }, [status]);
 
-  console.log(tvLists);
-  console.log(movieLists);
   // [{genre:{id, name}, list:[]}]
   // [...tvList, ...movieList]
 
@@ -78,13 +68,17 @@ const MainPage = () => {
       {status === 'loading' && <div>Loading...</div>}
       {status === 'resolved' && (
         <>
-          <MainBoard data={tvPopulars.list} mediaType="tv" />
-          <ListBoard data={moviePopulars.list} />
+          <MainBoard
+            data={[...tvPopulars.list, ...moviePopulars.list]}
+            mediaType="tv"
+          />
         </>
       )}
       {listStatus === 'idle' && <div>Idle</div>}
       {listStatus === 'loading' && <div>Loading...</div>}
-      {listStatus === 'resolved' && <div>resolved</div>}
+      {listStatus === 'resolved' && (
+        <ListBoard dataList={[...tvLists, ...movieLists]} />
+      )}
     </div>
   );
 };

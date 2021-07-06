@@ -1,50 +1,29 @@
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React from 'react';
 import CategoryBoard from '../CategoryBoard/CategoryBoard';
 import Paginator from '../Paginator/Paginator';
 import styles from './ListBoard.module.css';
 
-const ListBoard = ({ data }) => {
-  const containerRef = useRef(null);
-
+const ListBoard = ({ dataList }) => {
+  console.log(dataList);
   return (
     <div className={styles.listBoard}>
-      <CategoryBoard>
-        <Paginator
-          dataArr={data}
-          mediaType="movie"
-          category="Popular Movies"
-          size="small"
-        />
-      </CategoryBoard>
-
-      <div ref={containerRef}>
-        <CategoryBoard>
+      {dataList.map((data) => (
+        <CategoryBoard key={Math.random()}>
           <Paginator
-            dataArr={data}
-            mediaType="movie"
-            category="Tv Shows on Air"
+            dataArr={data.list}
+            // mediaType={dat}
+            category={data.genre.name}
             size="small"
           />
         </CategoryBoard>
-      </div>
-
-      <div ref={containerRef}>
-        <CategoryBoard>
-          <Paginator
-            dataArr={data}
-            mediaType="movie"
-            category="Movies Now Playing"
-            size="small"
-          />
-        </CategoryBoard>
-      </div>
+      ))}
     </div>
   );
 };
 
 ListBoard.propTypes = {
-  data: PropTypes.array,
+  dataList: PropTypes.array,
 };
 
 export default ListBoard;

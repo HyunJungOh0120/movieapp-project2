@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 // HELPERS
-import { IMG_ORIGINAL_SIZE, IMG_URL, getJSON } from '../../Helpers/Helpers';
+import { getJSON, IMG_ORIGINAL_SIZE, IMG_URL } from '../../Helpers/Helpers';
 // COMPONENTS
 import Genre from '../Genre/Genre';
 import Rates from '../Rates/Rates';
@@ -9,11 +9,11 @@ import Video from '../Video/Video';
 import styles from './BillBoard.module.css';
 import Buttons from './Buttons';
 
-const BillBoard = ({ billBoard, mediaType }) => {
+const BillBoard = ({ billBoard }) => {
   const [isClicked, setIsClicked] = useState(false);
   // console.log(billBoard);
   const [videoKey, setVideoKey] = useState('');
-
+  const mediaType = billBoard.mediaType;
   const backdropPath = billBoard.backdrop_path;
   const title = mediaType === 'tv' ? billBoard.name : billBoard.title;
   const averageRate = billBoard.vote_average;
@@ -89,7 +89,7 @@ BillBoard.propTypes = {
   billBoard: PropTypes.object,
   genres: PropTypes.array,
   vote_average: PropTypes.number,
-  mediaType: PropTypes.string,
+
   rate: PropTypes.number,
 };
 

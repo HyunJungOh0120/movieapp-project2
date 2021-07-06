@@ -8,16 +8,15 @@ import styles from './Paginator.module.css';
 
 const contentPerPage = CONTENTPERPAGE;
 
-const Paginator = ({ dataArr, mediaType, category, size }) => {
+const Paginator = ({ dataArr, category, size }) => {
   const [currPage, setCurrPage] = useState(1);
-
   const currContent = dataArr.slice(
     contentPerPage * currPage - contentPerPage,
     contentPerPage * currPage
   );
 
   const pages = Math.ceil(dataArr.length / contentPerPage);
-
+  const mediaType = dataArr[0].mediaType;
   // 0 - 4 .  5*1-5 5*1-1
   // 5 - 9    5*2-5 5*2-1
   // 10 - 14  5*3-5 5*3-1

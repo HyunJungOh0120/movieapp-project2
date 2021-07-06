@@ -26,7 +26,7 @@
 
 .smallPoster {
   composes: poster;
-  background: yellowgreen;
+  background: url('../../img/green.jpg');
   width: 20rem;
 }
 
