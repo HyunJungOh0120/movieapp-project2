@@ -51,6 +51,8 @@ const Paginator = ({ dataArr, mediaType, category, size }) => {
           const title = mediaType === 'tv' ? content.name : content.title;
           return (
             <Poster
+              mediaType={mediaType}
+              id={content.id}
               key={content.id}
               posterPath={posterPath(content)}
               title={title}

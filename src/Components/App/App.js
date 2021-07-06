@@ -3,7 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import MainPage from '../Pages/MainPage';
 import MoviePage from '../Pages/MoviePage';
+import SearchPage from '../Pages/SearchPage';
 import TvPage from '../Pages/TvPage';
+
 import './App.css';
 
 function App() {
@@ -12,6 +14,9 @@ function App() {
       <Navigation />
 
       <Switch>
+        <Route exact path="/">
+          <MainPage />
+        </Route>
         <Route exact path="/browse">
           <MainPage />
         </Route>
@@ -20,6 +25,9 @@ function App() {
         </Route>
         <Route exact path="/browse/tv">
           <TvPage />
+        </Route>
+        <Route path="/search">
+          <SearchPage />
         </Route>
       </Switch>
     </div>

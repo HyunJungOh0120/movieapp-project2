@@ -11,29 +11,13 @@ import Buttons from './Buttons';
 
 const BillBoard = ({ billBoard, mediaType }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [genres, setGenres] = useState([]);
+  console.log(billBoard);
   const [videoKey, setVideoKey] = useState('');
 
   const backdropPath = billBoard.backdrop_path;
   const title = mediaType === 'tv' ? billBoard.name : billBoard.title;
   const averageRate = billBoard.vote_average;
   const genreIds = billBoard.genre_ids;
-
-  useEffect(() => {
-    const getGenres = async () => {
-      try {
-        const genreUrl = `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
-        const res = await fetch(genreUrl);
-        const { genres } = await res.json();
-        setGenres(genres);
-      } catch (error) {
-        console.log('💥', error);
-      }
-    };
-    getGenres();
-
-    return () => {};
-  }, []);
 
   useEffect(() => {
     const id = billBoard.id;
@@ -54,7 +38,9 @@ const BillBoard = ({ billBoard, mediaType }) => {
     return () => {};
   }, [billBoard]);
 
-  const imgUrl = `${IMG_URL}${IMG_ORIGINAL_SIZE}${backdropPath}`;
+  const imgUrl = backdropPath
+    ? `${IMG_URL}${IMG_ORIGINAL_SIZE}${backdropPath}`
+    : '';
 
   const watchClickHandler = () => {
     setIsClicked(!isClicked);
@@ -83,7 +69,7 @@ const BillBoard = ({ billBoard, mediaType }) => {
         <div className={styles.details}>
           <Rates rate={averageRate} />
 
-          <Genre totalGenres={genres} billBoardGenres={genreIds} />
+          <Genre mediaGenre={genreIds} mediaType={mediaType} />
 
           <Buttons
             onWatchHandler={watchClickHandler}

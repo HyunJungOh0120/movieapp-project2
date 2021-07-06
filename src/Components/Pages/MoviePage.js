@@ -35,21 +35,17 @@ const MoviePage = () => {
     movielist: [],
   });
 
-  const getDiscoverUrl = (query, page = 1) => {
-    return `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&${query}page=${page}&include_adult=false`;
-  };
-
+  const page = 1;
+  const genreId = 12;
   useEffect(() => {
     const getMoviePopular = async () => {
       const moviePopularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
-      const popularKidsUrl = getDiscoverUrl(
-        'certification_country=US&certification.lte=G&sort_by=popularity.desc'
-      );
+      const moviesUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
 
       movieDispatch({ type: actions.STATUS, payload: { status: 'loading' } });
 
-      Promise.all([fetch(moviePopularUrl), fetch(popularKidsUrl)])
+      Promise.all([fetch(moviePopularUrl), fetch(moviesUrl)])
         .then((responses) => {
           return Promise.all(
             responses.map((response) => {
@@ -59,13 +55,14 @@ const MoviePage = () => {
           );
         })
         .then((data) => {
+          console.log(data[1].results);
           movieDispatch({
             type: actions.GET_POPULAR,
             payload: { value: data[0].results },
           });
           movieDispatch({
             type: actions.GET_LIST,
-            payload: { value: data[1].results, title: 'Popular Kids Movies' },
+            payload: { value: data[1].results, title: 'Top Rated Movies' },
           });
           movieDispatch({
             type: actions.STATUS,
@@ -84,8 +81,6 @@ const MoviePage = () => {
   // if this is done, all done.
   // then work with form. for movie, tv.
   // then detail page
-
-  console.log(movieState.movielist);
 
   return (
     <div>

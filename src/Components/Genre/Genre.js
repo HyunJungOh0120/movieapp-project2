@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useMain } from '../MainProvider';
 import styles from './Genre.module.css';
 
-const Genre = ({ totalGenres, billBoardGenres }) => {
+const Genre = ({ mediaGenre, mediaType }) => {
+  const { mainState } = useMain();
+
+  const { genres: totalGenres } = mainState[mediaType];
+
   const genreText = () => {
     const currGenreArray = totalGenres.filter((genre) =>
-      billBoardGenres.includes(genre.id)
+      mediaGenre.includes(genre.id)
     );
     return currGenreArray.map((genre) => (
       <p className={styles.genre} key={genre.id}>
@@ -23,8 +28,8 @@ const Genre = ({ totalGenres, billBoardGenres }) => {
 };
 
 Genre.propTypes = {
-  totalGenres: PropTypes.array,
-  billBoardGenres: PropTypes.array,
+  mediaGenre: PropTypes.array,
+  mediaType: PropTypes.string,
 };
 
 export default Genre;
