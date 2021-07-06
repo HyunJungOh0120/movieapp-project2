@@ -4,8 +4,8 @@ import MainBoard from '../MainBoard/MainBoard';
 import { useMain } from '../MainProvider';
 
 const TvPage = () => {
-  const { tvPopulars, tvGenres, status } = useMain();
-  console.log(tvGenres);
+  const { tvPopulars, status } = useMain();
+
   return (
     <div>
       {status === 'idle' && <p>Idle</p>}

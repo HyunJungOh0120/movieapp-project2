@@ -28,7 +28,7 @@ function MainProvider({ children }) {
         setStatus('loading');
         const urls = [tvGenreUrl, movieGenreUrl, moviePopularUrl, tvPopularUrl];
         const data = await Promise.all(urls.map((url) => getJSON(url, signal)));
-        console.log(data);
+
         setTvGenres(data[0].genres);
         setMovieGenres(data[1].genres);
         setMoviePopulars({ list: data[2].results, title: 'Popular Movies' });
@@ -48,7 +48,7 @@ function MainProvider({ children }) {
       });
     };
   }, []);
-  console.log(value);
+
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;
 }
 

@@ -11,7 +11,7 @@ import Buttons from './Buttons';
 
 const BillBoard = ({ billBoard, mediaType }) => {
   const [isClicked, setIsClicked] = useState(false);
-  console.log(billBoard);
+  // console.log(billBoard);
   const [videoKey, setVideoKey] = useState('');
 
   const backdropPath = billBoard.backdrop_path;
@@ -27,7 +27,8 @@ const BillBoard = ({ billBoard, mediaType }) => {
       try {
         const infoUrl = ` https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
 
-        const data = getJSON(infoUrl, { signal });
+        const data = await getJSON(infoUrl, { signal });
+
         setVideoKey(data.videos.results[0].key);
       } catch (error) {
         if (error.name === 'AbortError') return;

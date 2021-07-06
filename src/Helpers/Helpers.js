@@ -19,3 +19,16 @@ export const getJSON = async (url, { signal }) => {
   const json = await res.json();
   return json;
 };
+
+const getRandomNum = (arr) => Math.floor(Math.random() * arr.length);
+export const get3RandomNums = (arr) => {
+  const randomArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    const randomNum = getRandomNum(arr);
+    if (randomArr.length === 3) break;
+    if (randomArr.indexOf(randomNum) === -1) {
+      randomArr.push(randomNum);
+    }
+  }
+  return randomArr;
+};
