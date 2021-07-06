@@ -21,21 +21,26 @@ const BillBoard = ({ billBoard, mediaType }) => {
 
   useEffect(() => {
     const id = billBoard.id;
+    const controller = new AbortController();
+    const { signal } = controller;
     const getInfo = async () => {
       try {
         const infoUrl = ` https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
-        const res = await fetch(infoUrl);
+        const res = await fetch(infoUrl, { signal });
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         const data = await res.json();
 
         setVideoKey(data.videos.results[0].key);
       } catch (error) {
+        if (error.name === 'AbortError') return;
         console.log('💥', error);
       }
     };
     getInfo();
-    return () => {};
+    return () => {
+      controller.abort();
+    };
   }, [billBoard]);
 
   const imgUrl = backdropPath

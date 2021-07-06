@@ -66,12 +66,14 @@ const mainReducer = (state, action) => {
 
 function MainProvider({ children }) {
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     const getInitialData = async () => {
       mainDispatch({ type: actions.STATUS, payload: { status: 'loading' } });
 
       const urls = [tvGenreUrl, movieGenreUrl, moviePopularUrl, tvPopularUrl];
 
-      Promise.all(urls.map((url) => fetch(url)))
+      Promise.all(urls.map((url) => fetch(url, { signal })))
         .then((responses) => {
           return Promise.all(
             responses.map((response) => {
@@ -113,12 +115,19 @@ function MainProvider({ children }) {
             payload: { status: 'resolved' },
           });
         })
-        .catch((err) => {
+        .catch((error) => {
+          if (error.name === 'AbortError') return;
           mainDispatch({ type: actions.STATUS, payload: { status: 'error' } });
-          console.log(err);
+          console.log(error);
         });
     };
     getInitialData();
+
+    return () => {
+      setTimeout(() => {
+        controller.abort(), 2000;
+      });
+    };
   }, []);
   const [mainState, mainDispatch] = useReducer(mainReducer, {
     tv: { genres: [], populars: {} },

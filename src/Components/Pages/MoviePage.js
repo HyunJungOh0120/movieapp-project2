@@ -38,6 +38,8 @@ const MoviePage = () => {
   const page = 1;
   const genreId = 12;
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     const getMoviePopular = async () => {
       const moviePopularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
@@ -45,7 +47,10 @@ const MoviePage = () => {
 
       movieDispatch({ type: actions.STATUS, payload: { status: 'loading' } });
 
-      Promise.all([fetch(moviePopularUrl), fetch(moviesUrl)])
+      Promise.all([
+        fetch(moviePopularUrl, { signal }),
+        fetch(moviesUrl, { signal }),
+      ])
         .then((responses) => {
           return Promise.all(
             responses.map((response) => {
@@ -70,11 +75,16 @@ const MoviePage = () => {
           });
         })
         .catch((error) => {
+          if (error.name === 'AbortError') return;
           console.log(error);
         });
     };
     getMoviePopular();
-    return () => {};
+    return () => {
+      setTimeout(() => {
+        controller.abort(), 2000;
+      });
+    };
   }, []);
 
   //TODO change the listboard using map. take the data array.
