@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import { getJSON } from '../../Helpers/Helpers';
 
 const SearchPage = () => {
   const [results, setResults] = useState([]);
@@ -21,8 +22,7 @@ const SearchPage = () => {
         setStatus('loading');
         const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`;
 
-        const res = await fetch(searchUrl, { signal });
-        const data = await res.json();
+        const data = getJSON(searchUrl, { signal });
         setResults((prevResults) => [...prevResults, data.results]);
         setPage(data.page);
         setStatus('resolved');

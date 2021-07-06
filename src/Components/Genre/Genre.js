@@ -4,9 +4,9 @@ import { useMain } from '../MainProvider';
 import styles from './Genre.module.css';
 
 const Genre = ({ mediaGenre, mediaType }) => {
-  const { mainState } = useMain();
+  const { tvGenres, movieGenres } = useMain();
 
-  const { genres: totalGenres } = mainState[mediaType];
+  const totalGenres = mediaType === 'tv' ? tvGenres : movieGenres;
 
   const genreText = () => {
     const currGenreArray = totalGenres.filter((genre) =>

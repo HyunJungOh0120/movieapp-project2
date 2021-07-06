@@ -5,15 +5,7 @@ import { useMain } from '../MainProvider';
 // import { getListByGenreUrl } from '../../Helpers/Urls';
 
 const MainPage = () => {
-  const { mainState } = useMain();
-  const { tv } = mainState;
-  const { movie } = mainState;
-  const { status } = mainState;
-  console.log('tv', tv);
-  console.log('movie', movie);
-  //const tvGenres = mainState.tv.genres;
-  //const movieGenres = mainState.movie.genres;
-  // const [list, setList] = useState([movie.populars.list]);
+  const { moviePopulars, tvPopulars, status } = useMain();
 
   useEffect(() => {}, []);
 
@@ -23,8 +15,8 @@ const MainPage = () => {
       {status === 'loading' && <div>Loading...</div>}
       {status === 'resolved' && (
         <>
-          <MainBoard data={tv.populars.list} mediaType="tv" />
-          <ListBoard data={movie.populars.list} />)
+          <MainBoard data={tvPopulars.list} mediaType="tv" />
+          <ListBoard data={moviePopulars.list} />)
         </>
       )}
     </div>

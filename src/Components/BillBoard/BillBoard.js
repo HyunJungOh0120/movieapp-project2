@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 // HELPERS
-import { IMG_ORIGINAL_SIZE, IMG_URL } from '../../Helpers/Helpers';
+import { IMG_ORIGINAL_SIZE, IMG_URL, getJSON } from '../../Helpers/Helpers';
 // COMPONENTS
 import Genre from '../Genre/Genre';
 import Rates from '../Rates/Rates';
@@ -26,11 +26,8 @@ const BillBoard = ({ billBoard, mediaType }) => {
     const getInfo = async () => {
       try {
         const infoUrl = ` https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
-        const res = await fetch(infoUrl, { signal });
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
-        const data = await res.json();
-
+        const data = getJSON(infoUrl, { signal });
         setVideoKey(data.videos.results[0].key);
       } catch (error) {
         if (error.name === 'AbortError') return;
