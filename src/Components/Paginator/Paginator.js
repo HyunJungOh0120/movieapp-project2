@@ -16,12 +16,6 @@ const Paginator = ({ dataArr, category, size }) => {
   );
 
   const pages = Math.ceil(dataArr.length / contentPerPage);
-  const mediaType = dataArr[0].mediaType;
-  // 0 - 4 .  5*1-5 5*1-1
-  // 5 - 9    5*2-5 5*2-1
-  // 10 - 14  5*3-5 5*3-1
-  // contentPerPage * currPage - contentPerPage
-  // contentPerPage * currPage - 1
 
   const leftClickHandler = () => {
     if (currPage === 1) return;
@@ -47,14 +41,12 @@ const Paginator = ({ dataArr, category, size }) => {
         </Button>
 
         {currContent.map((content) => {
-          const title = mediaType === 'tv' ? content.name : content.title;
           return (
             <Poster
-              mediaType={mediaType}
               id={content.id}
               key={content.id}
               posterPath={posterPath(content)}
-              title={title}
+              title={content.title}
               size={size}
             />
           );

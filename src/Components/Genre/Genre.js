@@ -3,10 +3,8 @@ import React from 'react';
 import { useMain } from '../MainProvider';
 import styles from './Genre.module.css';
 
-const Genre = ({ mediaGenre, mediaType }) => {
-  const { tvGenres, movieGenres } = useMain();
-
-  const totalGenres = mediaType === 'tv' ? tvGenres : movieGenres;
+const Genre = ({ mediaGenre }) => {
+  const { movieGenres: totalGenres } = useMain();
 
   const genreText = () => {
     const currGenreArray = totalGenres.filter((genre) =>
@@ -29,7 +27,6 @@ const Genre = ({ mediaGenre, mediaType }) => {
 
 Genre.propTypes = {
   mediaGenre: PropTypes.array,
-  mediaType: PropTypes.string,
 };
 
 export default Genre;

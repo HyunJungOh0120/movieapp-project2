@@ -13,9 +13,8 @@ const BillBoard = ({ billBoard }) => {
   const [isClicked, setIsClicked] = useState(false);
   // console.log(billBoard);
   const [videoKey, setVideoKey] = useState('');
-  const mediaType = billBoard.mediaType;
   const backdropPath = billBoard.backdrop_path;
-  const title = mediaType === 'tv' ? billBoard.name : billBoard.title;
+  const title = billBoard.title;
   const averageRate = billBoard.vote_average;
   const genreIds = billBoard.genre_ids;
 
@@ -25,7 +24,7 @@ const BillBoard = ({ billBoard }) => {
     const { signal } = controller;
     const getInfo = async () => {
       try {
-        const infoUrl = ` https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
+        const infoUrl = ` https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
 
         const data = await getJSON(infoUrl, { signal });
 
@@ -72,7 +71,7 @@ const BillBoard = ({ billBoard }) => {
         <div className={styles.details}>
           <Rates rate={averageRate} />
 
-          <Genre mediaGenre={genreIds} mediaType={mediaType} />
+          <Genre mediaGenre={genreIds} />
 
           <Buttons
             onWatchHandler={watchClickHandler}

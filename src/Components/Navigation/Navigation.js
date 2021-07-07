@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MovieGenreList from '../../Data/MovieGenreList';
-import TvGenreList from '../../Data/TvGenreList';
+
 import Dropdown from './Dropdown';
 import styles from './Navigation.module.css';
 import SearchForm from './SearchForm';
 
 const Navigation = () => {
   const { genres: movieGenres } = MovieGenreList;
-
-  const { genres: tvGenres } = TvGenreList;
 
   return (
     <div role="navigation" className={styles.nav}>
@@ -31,13 +29,6 @@ const Navigation = () => {
             <span>Movies</span>
           </Link>
           <Dropdown genres={movieGenres} mediaType="movie" />
-        </li>
-
-        <li className={styles.nav__link}>
-          <Link to="/tv">
-            <span> Tv Show</span>
-          </Link>
-          <Dropdown genres={tvGenres} mediaType="tv" />
         </li>
       </ul>
 
