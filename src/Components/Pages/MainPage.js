@@ -4,10 +4,12 @@ import MainBoard from '../MainBoard/MainBoard';
 import Page from '../UI/Page/Page';
 const MainPage = () => {
   return (
-    <Page>
+    <>
       <MainBoard mediaType="movie" />
-      <ListBoard />
-    </Page>
+      <Page>
+        <ListBoard />
+      </Page>
+    </>
   );
 };
 
