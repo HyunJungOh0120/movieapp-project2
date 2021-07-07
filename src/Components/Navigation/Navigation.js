@@ -25,8 +25,8 @@ const Navigation = () => {
         </li>
 
         <li className={styles.nav__link}>
-          <Link to="/movie">
-            <span>Movies</span>
+          <Link to="/genre">
+            <span>Genres</span>
           </Link>
           <Dropdown genres={movieGenres} mediaType="movie" />
         </li>
