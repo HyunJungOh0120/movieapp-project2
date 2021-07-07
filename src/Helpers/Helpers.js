@@ -13,8 +13,8 @@ export const billBoardRateStandard = 5;
 
 export const CONTENTPERPAGE = 5;
 
-export const getJSON = async (url) => {
-  const res = await fetch(url);
+export const getJSON = async (url, signal) => {
+  const res = await fetch(url, { signal });
   if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
   const json = await res.json();
   return json;

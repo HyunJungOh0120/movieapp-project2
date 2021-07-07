@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import BillBoard from '../BillBoard/BillBoard';
-import { useMain } from '../MainProvider';
-import Paginator from '../Paginator/Paginator';
+import { useMain } from '../../MainProvider';
+import Paginator from '../../Paginator/Paginator';
 import PopularBoard from '../PopularBoard/PopularBoard';
 import styles from './MainBoard.module.css';
 
@@ -14,11 +14,6 @@ const MainBoard = ({ mediaType }) => {
   const { list: moviePopularList } = moviePopulars;
 
   const randomBillBoard = moviePopularList[randomNum];
-
-  // const [billBoardMovie, setBillBoardMovie] = useState(
-  //   moviePopularList[randomNum]
-  // );
-  //const [billBoard, setBillBoard] = useState(randomBillBoard);
 
   useEffect(() => {
     const interval = setInterval(() => {

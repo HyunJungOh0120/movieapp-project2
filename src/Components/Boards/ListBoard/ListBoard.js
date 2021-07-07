@@ -1,8 +1,8 @@
 import React from 'react';
-import useGenreLoad from '../../Helpers/useGenreLoad';
-import CategoryBoard from '../Boards/CategoryBoard/CategoryBoard';
-import { useMain } from '../MainProvider';
-import Paginator from '../Paginator/Paginator';
+import useGenreLoad from '../../../Helpers/useGenreLoad';
+import CategoryBoard from '../CategoryBoard/CategoryBoard';
+import { useMain } from '../../MainProvider';
+import Paginator from '../../Paginator/Paginator';
 import styles from './ListBoard.module.css';
 
 const ListBoard = () => {

@@ -1,0 +1,7 @@
+.btnBox {
+  display: flex;
+}
+
+.clickBtn {
+  margin: 1rem 1rem 0 0;
+}

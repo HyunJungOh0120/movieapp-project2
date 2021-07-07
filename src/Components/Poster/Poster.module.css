@@ -6,7 +6,7 @@
   margin: 0 0.6rem;
   cursor: pointer;
   background-color: rgba(41, 41, 41, 0.349);
-  background-image: url('/src/images/green.jpg');
+  background-image: url('./green.jpg');
   display: flex;
   align-items: center;
   justify-content: centers;
@@ -37,7 +37,7 @@
 
 .smallPoster {
   composes: poster;
-  background: url('../../img/green.jpg');
+  background: url('./green.jpg');
   width: 20rem;
 }
 

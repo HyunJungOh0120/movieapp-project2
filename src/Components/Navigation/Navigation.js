@@ -10,7 +10,15 @@ const Navigation = () => {
   const { genres: movieGenres } = MovieGenreList;
 
   const { pathname } = useLocation();
-  const className = pathname === '/browse' ? styles.nav : styles.sticky;
+
+  const generateClassName = (pathname) => {
+    if (pathname === '/browse') return styles.nav;
+    if (pathname === '/') return styles.nav;
+
+    return styles.sticky;
+  };
+
+  const className = generateClassName(pathname);
 
   return (
     <div role="navigation" className={className}>

@@ -3,4 +3,25 @@
   color: var(--main-black);
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: min-content 80rem 1fr;
+}
+
+.section {
+  padding: 1rem;
+}
+
+.section__1 {
+  composes: section;
+  background-color: khaki;
+}
+
+.section__2 {
+  composes: section;
+  background-color: lightcoral;
+}
+
+.section__3 {
+  composes: section;
+  background-color: lightseagreen;
 }
