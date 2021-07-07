@@ -59,7 +59,10 @@ const BillBoard = ({ billBoard }) => {
         isClicked={isClicked}
         onWatchHandler={watchClickHandler}
       />
-      <div className={styles.imgBox}>
+      <div
+        className={styles.imgBox}
+        // style={{ background: `url(${imgUrl}) no-repeat center fixed` }}
+      >
         <img
           src={imgUrl}
           alt="Bill board's backdrop image"

@@ -3,7 +3,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import useSearch from '../../Helpers/useSearch';
 import Poster from '../Poster/Poster';
-import Page from '../UI/Page/Page';
+import ResultPage from '../UI/Page/Page';
 
 const SearchPage = () => {
   const { search } = useLocation();
@@ -29,37 +29,47 @@ const SearchPage = () => {
     [loading, hasMore]
   );
 
-  return (
-    <Page>
-      {results.map((result, index) => {
-        if (results.length === index + 1) {
-          return (
-            <div ref={lastResultRef}>
-              <Poster
-                key={Math.random()}
-                posterPath={result.poster_path}
-                title={result.title}
-                size="big"
-              />
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              <Poster
-                key={Math.random()}
-                posterPath={result.poster_path}
-                title={result.title}
-                size="big"
-              />
-            </div>
-          );
-        }
-      })}
+  const style = {
+    padding: '2rem',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridAutoRows: '32rem',
+    gridgap: '2rem',
+  };
 
-      {loading && <div>Loading...</div>}
-      {error && <div>Error...</div>}
-    </Page>
+  return (
+    <ResultPage>
+      <div style={style}>
+        {results.map((result, index) => {
+          if (results.length === index + 1) {
+            return (
+              <div ref={lastResultRef} key={Math.random()}>
+                <Poster
+                  posterPath={result.poster_path}
+                  title={result.title}
+                  size="big"
+                  id={result.id}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <div key={Math.random()}>
+                <Poster
+                  posterPath={result.poster_path}
+                  title={result.title}
+                  size="big"
+                  id={result.id}
+                />
+              </div>
+            );
+          }
+        })}
+
+        {loading && <div>Loading...</div>}
+        {error && <div>Error...</div>}
+      </div>
+    </ResultPage>
   );
 };
 

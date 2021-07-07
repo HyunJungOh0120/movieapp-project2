@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import MovieGenreList from '../../Data/MovieGenreList';
 import Dropdown from './Dropdown';
@@ -8,8 +9,11 @@ import SearchForm from './SearchForm';
 const Navigation = () => {
   const { genres: movieGenres } = MovieGenreList;
 
+  const { pathname } = useLocation();
+  const className = pathname === '/browse' ? styles.nav : styles.sticky;
+
   return (
-    <div role="navigation" className={styles.nav}>
+    <div role="navigation" className={className}>
       <Link to="/browse">
         <span className={styles.logo}>🍿</span>
       </Link>

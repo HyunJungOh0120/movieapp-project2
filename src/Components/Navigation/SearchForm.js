@@ -28,7 +28,11 @@ const SearchForm = () => {
       />
       <button className={styles.searchBtn} onClick={submitHandler}>
         <Link
-          to={searchInput ? `/search?query=${searchInput}` : location.pathname}
+          to={
+            searchInput
+              ? `/search?query=${searchInput}`
+              : `${location.pathname}${location.search}`
+          }
         >
           <FontAwesomeIcon icon="search" />
         </Link>

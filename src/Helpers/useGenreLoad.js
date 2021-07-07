@@ -30,7 +30,6 @@ const useGenreLoad = (mediaType, genresList, contextStatus) => {
       }
     };
     getLists();
-    console.log(contextStatus);
   }, [contextStatus]);
 
   return { listStatus, lists };

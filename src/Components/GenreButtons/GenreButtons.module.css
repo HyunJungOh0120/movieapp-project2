@@ -1,5 +1,11 @@
 .buttonBox {
   display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--main-black);
+  width: 100%;
+  padding: 2rem 0;
 }
 
 .buttonBox button {

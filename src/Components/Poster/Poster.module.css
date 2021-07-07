@@ -4,6 +4,7 @@
   position: relative;
   flex-wrap: 1;
   margin: 0 0.6rem;
+  cursor: pointer;
 }
 
 .poster img {

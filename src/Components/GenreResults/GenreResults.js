@@ -37,9 +37,8 @@ const GenreResults = () => {
       {results.map((result, index) => {
         if (results.length === index + 1) {
           return (
-            <div ref={lastResultRef}>
+            <div ref={lastResultRef} key={Math.random()}>
               <Poster
-                key={Math.random()}
                 posterPath={result.poster_path}
                 title={result.title}
                 size="big"
@@ -48,9 +47,8 @@ const GenreResults = () => {
           );
         } else {
           return (
-            <div>
+            <div key={Math.random()}>
               <Poster
-                key={Math.random()}
                 posterPath={result.poster_path}
                 title={result.title}
                 size="big"
