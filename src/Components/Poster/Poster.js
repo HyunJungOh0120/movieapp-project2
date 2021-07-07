@@ -7,14 +7,19 @@ import styles from './Poster.module.css';
 const Poster = ({ posterPath, title, size = 'small', id }) => {
   const imgUrl = posterPath
     ? `${IMG_URL}${IMG_W500_SIZE}${posterPath}`
-    : '../../img/green.jpg';
+    : '/src/images/green.jpg';
 
   const className = size === 'big' ? styles.poster : styles.smallPoster;
 
   return (
     <Link to={`/detail?id=${id}`}>
       <div className={className}>
-        <img src={imgUrl} alt={title} id={id} />
+        <img
+          src={imgUrl}
+          alt={title}
+          id={id}
+          onError="this.onerror=null;this.src='/src/images/green.jpg';"
+        />
         <p>{title}</p>
       </div>
     </Link>

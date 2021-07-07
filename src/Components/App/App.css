@@ -5,8 +5,15 @@
 @import '../../Helpers/colors.css';
 
 body {
-  background: linear-gradient(black, var(--main-black));
-  padding-top: 7rem;
+  background: var(--main-black);
+
+  min-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+div {
+  border-radius: 7px;
 }
 
 @media screen and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) {

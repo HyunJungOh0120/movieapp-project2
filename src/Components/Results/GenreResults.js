@@ -42,6 +42,7 @@ const GenreResults = () => {
                 posterPath={result.poster_path}
                 title={result.title}
                 size="big"
+                id={result.id}
               />
             </div>
           );
@@ -52,6 +53,7 @@ const GenreResults = () => {
                 posterPath={result.poster_path}
                 title={result.title}
                 size="big"
+                id={result.id}
               />
             </div>
           );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
+import DetailPage from '../Pages/DetailPage';
 import GenrePage from '../Pages/GenrePage';
 import MainPage from '../Pages/MainPage';
 import SearchPage from '../Pages/SearchPage';
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route path="/detail">
+            <DetailPage />
           </Route>
         </Switch>
       </div>

@@ -1,10 +1,19 @@
 .poster {
-  width: 20rem;
+  width: 21rem;
   height: 100%;
   position: relative;
   flex-wrap: 1;
   margin: 0 0.6rem;
   cursor: pointer;
+  background-color: rgba(41, 41, 41, 0.349);
+  background-image: url('/src/images/green.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: centers;
+}
+
+.poster p {
+  text-align: center;
 }
 
 .poster img {
@@ -16,6 +25,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
+
   border-radius: 0.7rem;
   box-shadow: 0 0 29px 3px var(--main-black);
   transition: transform 0.3s ease;
