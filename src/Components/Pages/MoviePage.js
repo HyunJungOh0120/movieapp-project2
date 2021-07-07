@@ -1,24 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import useGenreLoad from '../../Helpers/useGenreLoad';
 import ListBoard from '../ListBoard/ListBoard';
 import MainBoard from '../MainBoard/MainBoard';
 import { useMain } from '../MainProvider';
 
 const MoviePage = () => {
   const { moviePopulars, movieGenres, status } = useMain();
-  console.log(movieGenres);
+  const { listStatus, lists: movieLists } = useGenreLoad(
+    'movie',
+    movieGenres,
+    status
+  );
 
-  useEffect(() => {
-    return () => {};
-  }, []);
-  console.log(moviePopulars.list);
+  console.log(movieLists);
+
   return (
     <div>
-      {status === 'idle' && <p>Idle</p>}
-      {status === 'loading' && <p>Loading...</p>}
-      {status === 'resolved' && (
+      {listStatus === 'idle' && <p>Idle</p>}
+      {listStatus === 'loading' && <p>Loading...</p>}
+      {listStatus === 'resolved' && (
         <>
           <MainBoard data={moviePopulars.list} mediaType="movie" />
-          <ListBoard data={moviePopulars.list} />)
+          <ListBoard dataList={[...movieLists]} />)
         </>
       )}
     </div>

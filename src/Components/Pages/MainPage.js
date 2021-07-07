@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { get3RandomNums, getJSON } from '../../Helpers/Helpers';
+import { getJSON, getRandomNumsArrays } from '../../Helpers/Helpers';
 import { getListByGenreUrl } from '../../Helpers/Urls';
 import ListBoard from '../ListBoard/ListBoard';
 import MainBoard from '../MainBoard/MainBoard';
@@ -24,8 +24,8 @@ const MainPage = () => {
 
   useEffect(() => {
     // 3 each
-    const randomTvGenresIndexes = get3RandomNums(tvGenres); // index [1,3,6] genre[1].name
-    const randomMovieGenresIndexes = get3RandomNums(movieGenres); // [2,4,8]
+    const randomTvGenresIndexes = getRandomNumsArrays(tvGenres, 3); // index [1,3,6] genre[1].name
+    const randomMovieGenresIndexes = getRandomNumsArrays(movieGenres, 3); // [2,4,8]
 
     const getLists = async () => {
       try {

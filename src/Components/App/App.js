@@ -3,9 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import MainPage from '../Pages/MainPage';
 import MoviePage from '../Pages/MoviePage';
-import SearchPage from '../Pages/SearchPage';
 import TvPage from '../Pages/TvPage';
-
+import SearchPage from '../Pages/SearchPage';
 import './App.css';
 
 function App() {
@@ -20,10 +19,10 @@ function App() {
         <Route exact path="/browse">
           <MainPage />
         </Route>
-        <Route exact path="/browse/movie">
+        <Route path="/movie">
           <MoviePage />
         </Route>
-        <Route exact path="/browse/tv">
+        <Route path="/tv">
           <TvPage />
         </Route>
         <Route path="/search">

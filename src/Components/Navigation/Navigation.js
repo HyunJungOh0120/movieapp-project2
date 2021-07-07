@@ -27,14 +27,14 @@ const Navigation = () => {
         </li>
 
         <li className={styles.nav__link}>
-          <Link to="/browse/movie">
+          <Link to="/movie">
             <span>Movies</span>
           </Link>
           <Dropdown genres={movieGenres} mediaType="movie" />
         </li>
 
         <li className={styles.nav__link}>
-          <Link to="/browse/tv">
+          <Link to="/tv">
             <span> Tv Show</span>
           </Link>
           <Dropdown genres={tvGenres} mediaType="tv" />

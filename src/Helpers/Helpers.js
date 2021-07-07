@@ -21,14 +21,22 @@ export const getJSON = async (url) => {
 };
 
 const getRandomNum = (arr) => Math.floor(Math.random() * arr.length);
-export const get3RandomNums = (arr) => {
+export const getRandomNumsArrays = (arr, length) => {
   const randomArr = [];
   for (let i = 0; i < arr.length; i++) {
     const randomNum = getRandomNum(arr);
-    if (randomArr.length === 3) break;
+    if (randomArr.length === length) break;
     if (randomArr.indexOf(randomNum) === -1) {
       randomArr.push(randomNum);
     }
   }
   return randomArr;
+};
+
+export const setInfo = (Results, Genres, Indexes, mediaType) => {
+  return Results.map((results, i) => {
+    results.forEach((result) => (result.mediaType = mediaType));
+
+    return { genre: Genres[Indexes[i]], list: results };
+  });
 };
