@@ -8,7 +8,7 @@ const Dropdown = ({ genres }) => {
     <ul className={styles.dropDown} aria-level="submenu">
       {genres.map((genre) => (
         <li key={genre.id}>
-          <NavLink to={`/genre/${genre.name}`} activeClassName="active">
+          <NavLink to={`/genre?genre=${genre.id}`} activeClassName="active">
             {genre.name}
           </NavLink>
         </li>

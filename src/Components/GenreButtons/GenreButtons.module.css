@@ -1,0 +1,10 @@
+.buttonBox {
+  display: flex;
+}
+
+.buttonBox button {
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--main-black);
+  margin: 0 0.3rem;
+}

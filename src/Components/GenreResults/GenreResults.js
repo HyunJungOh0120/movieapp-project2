@@ -1,16 +1,19 @@
 import queryString from 'query-string';
 import React, { useCallback, useRef, useState } from 'react';
-import { useLocation } from 'react-router';
-import useSearch from '../../Helpers/useSearch';
+import { useLocation } from 'react-router-dom';
+import useGenreSearch from '../../Helpers/useGenreSearch';
 import Poster from '../Poster/Poster';
-import Page from '../UI/Page/Page';
+import styles from './GenreResults.module.css';
 
-const SearchPage = () => {
+const GenreResults = () => {
   const { search } = useLocation();
-  const { query } = queryString.parse(search);
+  const { genre: genreId } = queryString.parse(search);
 
   const [pageNumber, setPageNumber] = useState(1);
-  const { loading, error, results, hasMore } = useSearch(query, pageNumber);
+  const { loading, error, results, hasMore } = useGenreSearch(
+    genreId,
+    pageNumber
+  );
 
   const observer = useRef();
   const lastResultRef = useCallback(
@@ -30,7 +33,7 @@ const SearchPage = () => {
   );
 
   return (
-    <Page>
+    <div className={styles.genreResults}>
       {results.map((result, index) => {
         if (results.length === index + 1) {
           return (
@@ -59,8 +62,8 @@ const SearchPage = () => {
 
       {loading && <div>Loading...</div>}
       {error && <div>Error...</div>}
-    </Page>
+    </div>
   );
 };
 
-export default SearchPage;
+export default GenreResults;

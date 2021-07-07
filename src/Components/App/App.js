@@ -10,21 +10,22 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-
-      <Switch>
-        <Route exact path="/">
-          <MainPage />
-        </Route>
-        <Route exact path="/browse">
-          <MainPage />
-        </Route>
-        <Route exact path="/genre">
-          <GenrePage />
-        </Route>
-        <Route path="/search">
-          <SearchPage />
-        </Route>
-      </Switch>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <MainPage />
+          </Route>
+          <Route exact path="/browse">
+            <MainPage />
+          </Route>
+          <Route exact path="/genre">
+            <GenrePage />
+          </Route>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

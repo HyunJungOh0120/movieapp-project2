@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MovieGenreList from '../../Data/MovieGenreList';
-
 import Dropdown from './Dropdown';
 import styles from './Navigation.module.css';
 import SearchForm from './SearchForm';
@@ -25,10 +24,10 @@ const Navigation = () => {
         </li>
 
         <li className={styles.nav__link}>
-          <Link to="/genre">
+          <Link to={`/genre?genre=${movieGenres[0].id}`}>
             <span>Genres</span>
           </Link>
-          <Dropdown genres={movieGenres} mediaType="movie" />
+          <Dropdown genres={movieGenres} />
         </li>
       </ul>
 

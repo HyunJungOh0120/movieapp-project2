@@ -1,3 +1,5 @@
 .mainBoard {
   height: 100vh;
+  width: inherit;
+  position: relative;
 }

@@ -1,12 +1,16 @@
 import React from 'react';
+import GenreButtons from '../GenreButtons/GenreButtons';
+import GenreResults from '../GenreResults/GenreResults';
+import Page from '../UI/Page/Page';
 
-import { useMain } from '../MainProvider';
-
-const MoviePage = () => {
-  const { movieGenres } = useMain();
-  console.log(movieGenres);
-
-  return <div>hi</div>;
+// genres =[ { id:28}, {name: 'Action}]
+const GenrePage = () => {
+  return (
+    <Page>
+      <GenreButtons />
+      <GenreResults />
+    </Page>
+  );
 };
 
-export default MoviePage;
+export default GenrePage;
