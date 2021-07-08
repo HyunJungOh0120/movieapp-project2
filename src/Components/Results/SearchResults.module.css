@@ -8,4 +8,16 @@
 
 .searchQuery {
   font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.searchLinks {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  font-size: 1.6rem;
+}
+
+.searchLinks p {
+  color: var(--orange);
+  cursor: pointer;
 }

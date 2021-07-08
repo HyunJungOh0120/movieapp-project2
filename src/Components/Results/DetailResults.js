@@ -141,7 +141,6 @@ const DetailResults = () => {
           </div>
         </div>
       </section>
-      <section className={styles.section__3}>section3</section>
     </div>
   );
 };

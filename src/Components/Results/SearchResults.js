@@ -1,9 +1,9 @@
 import queryString from 'query-string';
 import React, { useCallback, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import useSearch from '../../Helpers/useSearch';
 import Poster from '../Poster/Poster';
-import Card from '../UI/Card/Card';
 import Page from '../UI/Page/Page';
 import styles from './SearchResults.module.css';
 
@@ -13,7 +13,10 @@ const SearchResults = () => {
 
   const [pageNumber, setPageNumber] = useState(1);
 
-  const { loading, error, results, hasMore } = useSearch(query, pageNumber);
+  const { loading, error, results, hasMore, personResult } = useSearch(
+    query,
+    pageNumber
+  );
 
   const observer = useRef();
   const lastResultRef = useCallback(
@@ -32,11 +35,42 @@ const SearchResults = () => {
     [loading, hasMore]
   );
 
+  console.log(personResult);
+
   return (
     <Page>
       <div className={styles.searchQuery}>Results for {query} ...</div>
-      {results.length === 0 && <Card>No results..</Card>}
+
+      <div className={styles.searchLinks}>
+        {personResult.length > 1 && (
+          <>
+            {personResult.map((person) => {
+              return (
+                <Link to={`/search?query=${person.name}`} key={Math.random()}>
+                  <p>{person.name}</p>
+                </Link>
+              );
+            })}
+          </>
+        )}
+      </div>
       <div className={styles.searchResults}>
+        {personResult.length === 1 && (
+          <>
+            {personResult[0].known_for.map((movie) => {
+              return (
+                <Poster
+                  posterPath={movie.poster_path}
+                  title={movie.title}
+                  id={movie.id}
+                  key={movie.id}
+                  size="big"
+                />
+              );
+            })}
+          </>
+        )}
+
         {results.length > 0 && (
           <>
             {results.map((result, index) => {
@@ -66,6 +100,7 @@ const SearchResults = () => {
             })}
           </>
         )}
+        {/* {results.length === 0 && <Card>No results..</Card>} */}
         {loading && <div>Loading...</div>}
         {error && <div>Error...</div>}
       </div>
