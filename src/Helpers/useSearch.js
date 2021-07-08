@@ -14,6 +14,9 @@ const useSearch = (query, pageNumber) => {
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`;
+    const personUrl = `https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`;
+    console.log(personUrl);
+
     const getResults = async () => {
       setLoading(true);
       try {
