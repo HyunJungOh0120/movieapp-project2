@@ -5,6 +5,7 @@ import { getJSON, IMG_URL, IMG_W500_SIZE } from '../../Helpers/Helpers';
 import Genre from '../Genre/Genre';
 import CastPaginator from '../Paginator/CastPaginator';
 import Paginator from '../Paginator/Paginator';
+
 import styles from './DetailResults.module.css';
 
 const genreIds = (arr) => arr.map((genre) => genre.id);
@@ -20,7 +21,7 @@ const DetailResults = () => {
   const [recommends, setRecommends] = useState([]);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,images`;
     const castUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
     const recommendUrl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 
@@ -70,6 +71,7 @@ const DetailResults = () => {
   const imgUrl = details.poster_path
     ? `${IMG_URL}${IMG_W500_SIZE}${details.poster_path}`
     : ``;
+  console.log(details);
 
   return (
     <div className={styles.detailResults}>
@@ -100,6 +102,20 @@ const DetailResults = () => {
             <h3>Director</h3>
             <p>{omdbDetails.Director && omdbDetails.Director}</p>
           </article>
+        </div>
+        <div className={styles.videoBox}>
+          {details.videos && (
+            <iframe
+              width="400"
+              height="210"
+              id="ytplayer"
+              type="text/html"
+              src={`https://www.youtube-nocookie.com/embed/${details.videos.results[0].key}?fs=0&modestbranding=1&playsinline=1`}
+              title="Trailer video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+              allowFullScreen
+            ></iframe>
+          )}
         </div>
       </section>
       <section className={styles.section__2}>

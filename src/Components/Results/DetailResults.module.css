@@ -1,5 +1,5 @@
 .detailResults {
-  background: var(--beigeWhite);
+  background-color: gray;
   color: var(--main-black);
   width: 100%;
 
@@ -14,7 +14,10 @@
 .section__1 {
   composes: section;
   display: flex;
+  justify-content: space-between;
   height: 44rem;
+  background-color: var(--main-black);
+  color: var(--beigeWhite);
 }
 
 .movieTitle {
@@ -38,18 +41,17 @@
 
 .section__2 {
   composes: section;
-  background-color: gray;
+
   font-size: 1.4rem;
 }
 
 .posterBox {
   height: 40rem;
-  width: 30rem;
+  width: 28rem;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 2rem;
 }
 
 .posterBox img {
@@ -63,6 +65,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  padding: 0.5rem;
 }
 
 .ratingBox {
@@ -116,4 +120,9 @@
 
 .row {
   height: 32rem;
+}
+
+.videoBox {
+  width: 40rem;
+  height: 20rem;
 }
