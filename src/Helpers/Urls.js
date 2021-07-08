@@ -1,4 +1,4 @@
-export const movieGenreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=$568d70d9321d73f65ec37dc872130204`;
+export const movieGenreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=568d70d9321d73f65ec37dc872130204`;
 
 export const moviePopularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=568d70d9321d73f65ec37dc872130204`;
 
