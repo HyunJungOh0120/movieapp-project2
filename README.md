@@ -91,14 +91,9 @@ There are total 4 pages.
 
 - Some re-useable components like Paginator, Button, Poster have their own css.module style. So It was quite challenging when using these on other pages especially in different sizes.
 
-⓷ Fetching multiple API
+⓷ Infinite scroll
 
-- On main page, API for the popular movies, 5 different APIs for randomly picked genre movies are to be fetched at one time. In case of delaying other loadings, I used AbortController.
-
-⓸ Infinite scroll
-
-- Since TMDB api provides only 20 results in 1 page, I was considering how to load and show more results.
-  Used Intersection Observer API, useEffect, useRef, useCallback hooks.
+- Since TMDB api provides only 20 results in 1 page, I was considering how to load and show more results. Used Intersection Observer API, useEffect, useRef, useCallback hooks.
 
 ## 💻 Technologies
 
