@@ -2,11 +2,31 @@
 
 Simple movie info & search app built with HTML, CSS Module, React.js
 
+## Preview
+
+[Preview](https://movieapp-project2.vercel.app/)
+
+## Table of contents
+
+---
+
+- [Introduction](#Introduction)
+- [Features](#Features)
+- [Visuals](#Visuals)
+- [Challenging part](#Challenging-part)
+- [Technologies](#Technologies)
+- [Links](#Links)
+
 ## 🌼 Introduction
 
-This is a movie app where you can search the movie title or movie casts/credits and get some details on movie.
+---
+
+This is a movie app where you can search the movie title or movie casts/credits and get some details on movie. I love netflix, but sometimes, I wanted to just see the main posters instead of auto played trailers on netflix. I love amazon prime as well, especially 'searching on watching' is the best part of it.
+So I can't provide streaming service but this web app will provide the official trailers, and whatever the images we click, the search results will be displayed.
 
 ## 🚀 Features
+
+---
 
 There are total 4 pages.
 
@@ -27,6 +47,7 @@ There are total 4 pages.
   - When the actor's name is searched, similar names will be shown. If user clicks one of these names, the website will automatically search with this name keyword.
     - ex) Daniel => Daniel Bruhl, Daniel Gillies, Daniel Baldwin, Daniel Craig...
   - If the results have same key word, the website will merge the duplicated results.
+  - Provides the **infinite scroll**!
 
 ```javascript
 // before
@@ -47,12 +68,49 @@ There are total 4 pages.
 
 ## 🎨 Visuals
 
-## Contributing
+---
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+![Home](/ReadmeImages/main.gif)
 
-Please make sure to update tests as appropriate.
+![genre](/ReadmeImages/genretodetail.gif)
+
+![search](/ReadmeImages/searchtodetail.gif)
+
+![Detail](/ReadmeImages/detailtosearch.gif)
+
+## Challenging part
+
+---
+
+⓵ Search
+
+- when the use search the movie title or casts, in many cases user does't write full words. In case of searching casts, all related results are listed and clickable for user to search.
+- There are some duplicated results which isn't I expected. Made a for-loop function to find & merge all values into one object data.
+
+⓶ Components
+
+- Some re-useable components like Paginator, Button, Poster have their own css.module style. So It was quite challenging when using these on other pages especially in different sizes.
+
+⓷ Fetching multiple API
+
+- On main page, API for the popular movies, 5 different APIs for randomly picked genre movies are to be fetched at one time. In case of delaying other loadings, I used AbortController.
+
+⓸ Infinite scroll
+
+- Since TMDB api provides only 20 results in 1 page, I was considering how to load and show more results.
+  Used Intersection Observer API, useEffect, useRef, useCallback hooks.
+
+## 💻 Technologies
+
+---
+
+Project is created with:
+
+- HTML
+- CSS.module
+- REACT.js
 
 ## Links
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[TMDB API](https://api.themoviedb.org/3/ 'TMDB API')
+[OMDB API](http://www.omdbapi.com/ 'OMDB API')
