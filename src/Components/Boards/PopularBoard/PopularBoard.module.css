@@ -1,11 +1,16 @@
 .popularBoard {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   width: 100%;
-  height: 30rem;
+  height: 33rem;
 
   position: absolute;
   bottom: -2rem;
+}
+
+.popularBoard h2 {
+  font-size: 2rem;
 }

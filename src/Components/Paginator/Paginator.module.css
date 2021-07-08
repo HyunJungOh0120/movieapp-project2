@@ -15,8 +15,8 @@
 
 .row {
   display: flex;
+  /* justify-content: space-between; */
   position: relative;
-  margin-top: 1rem;
   height: 100%;
 }
 

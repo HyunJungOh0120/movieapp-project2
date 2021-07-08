@@ -20,6 +20,7 @@ const ListBoard = () => {
         <>
           {movieLists.map((data) => (
             <CategoryBoard key={Math.random()}>
+              <h2>{data.genre.name}</h2>
               <Paginator
                 dataArr={data.list}
                 category={data.genre.name}

@@ -12,6 +12,7 @@ const SearchResults = () => {
   const { query } = queryString.parse(search);
 
   const [pageNumber, setPageNumber] = useState(1);
+
   const { loading, error, results, hasMore } = useSearch(query, pageNumber);
 
   const observer = useRef();

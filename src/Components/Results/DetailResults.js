@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 import { getJSON, IMG_URL, IMG_W500_SIZE } from '../../Helpers/Helpers';
 import Genre from '../Genre/Genre';
 import CastPaginator from '../Paginator/CastPaginator';
-import Card from '../UI/Card/Card';
+import Paginator from '../Paginator/Paginator';
 import styles from './DetailResults.module.css';
 
 const genreIds = (arr) => arr.map((genre) => genre.id);
@@ -17,23 +17,24 @@ const DetailResults = () => {
   const [details, setDetails] = useState({});
   const [omdbDetails, setOmdbDetails] = useState({});
   const [casts, setCasts] = useState([]);
-
-  const cast1 = casts[1];
+  const [recommends, setRecommends] = useState([]);
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
     const castUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+    const recommendUrl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 
     const getMovieDetail = async () => {
       try {
         const data = await Promise.all([
           getJSON(url, signal),
           getJSON(castUrl, signal),
+          getJSON(recommendUrl, signal),
         ]);
-        console.log(data[1]);
 
         setDetails(data[0]);
         setCasts(data[1].cast);
+        setRecommends(data[2].results);
       } catch (error) {
         console.log(error);
       }
@@ -52,7 +53,7 @@ const DetailResults = () => {
     const getOmdbDetail = async () => {
       try {
         const data = await getJSON(omdbUrl, signal);
-        console.log(data);
+
         setOmdbDetails(data);
       } catch (error) {
         console.log(error);
@@ -65,7 +66,6 @@ const DetailResults = () => {
       });
     };
   }, [details]);
-  console.log(casts);
 
   const imgUrl = details.poster_path
     ? `${IMG_URL}${IMG_W500_SIZE}${details.poster_path}`
@@ -77,7 +77,7 @@ const DetailResults = () => {
         <div className={styles.posterBox}>
           <img src={details.poster_path ? imgUrl : ''} alt="poster" />
         </div>
-        <Card className={styles.infoCard}>
+        <div className={styles.infoCard}>
           <h2 className={styles.movieTitle}>
             {details.title ? details.title : 'title'}
           </h2>
@@ -100,7 +100,7 @@ const DetailResults = () => {
             <h3>Director</h3>
             <p>{omdbDetails.Director && omdbDetails.Director}</p>
           </article>
-        </Card>
+        </div>
       </section>
       <section className={styles.section__2}>
         <div>
@@ -128,7 +128,17 @@ const DetailResults = () => {
 
         <div className={styles.castBox}>
           <h2>Casts</h2>
-          {cast1 && <CastPaginator dataArr={casts} />}
+          <div className={styles.row}>
+            {casts && <CastPaginator dataArr={casts} />}
+          </div>
+        </div>
+
+        <div className={styles.recommendBox}>
+          <h2>Recommendations</h2>
+          <div className={styles.row}>
+            {recommends && <Paginator dataArr={recommends} size="big" />}
+            {recommends.length === 0 && <div>No recommendations.. Sorry!</div>}
+          </div>
         </div>
       </section>
       <section className={styles.section__3}>section3</section>

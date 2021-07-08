@@ -8,7 +8,7 @@ import styles from './Paginator.module.css';
 
 const contentPerPage = CONTENTPERPAGE;
 
-const Paginator = ({ dataArr, category, size }) => {
+const Paginator = ({ dataArr, size }) => {
   const [currPage, setCurrPage] = useState(1);
   const currContent = dataArr.slice(
     contentPerPage * currPage - contentPerPage,
@@ -34,7 +34,6 @@ const Paginator = ({ dataArr, category, size }) => {
 
   return (
     <div className={styles.paginator}>
-      <h2>{category}</h2>
       <div className={styles.row}>
         <Button className={styles.leftBtn} onClick={leftClickHandler}>
           {currPage > 1 && <FontAwesomeIcon icon={['fas', 'chevron-left']} />}
@@ -65,7 +64,7 @@ const Paginator = ({ dataArr, category, size }) => {
 Paginator.propTypes = {
   dataArr: PropTypes.array,
   mediaType: PropTypes.string,
-  category: PropTypes.string,
+
   size: PropTypes.string,
 };
 

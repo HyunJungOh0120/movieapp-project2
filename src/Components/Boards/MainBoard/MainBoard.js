@@ -31,6 +31,7 @@ const MainBoard = ({ mediaType }) => {
         <>
           <BillBoard billBoard={randomBillBoard} mediaType={mediaType} />
           <PopularBoard>
+            <h2>Popular Movies</h2>
             <Paginator
               dataArr={moviePopularList}
               category="Popular Movies"

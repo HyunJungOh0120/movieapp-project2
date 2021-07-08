@@ -11,6 +11,8 @@
   display: inline-block;
   width: 100%;
   border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .castBox p {
@@ -21,4 +23,9 @@
 
 .castBox p:last-child {
   color: rgb(182, 182, 182);
+}
+
+.profile:hover,
+.profile:focus-within {
+  transform: scale(1.1);
 }
