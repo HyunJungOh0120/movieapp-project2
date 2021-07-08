@@ -17,7 +17,6 @@ const SearchResults = () => {
     query,
     pageNumber
   );
-  console.log(personResult);
 
   const observer = useRef();
   const lastResultRef = useCallback(

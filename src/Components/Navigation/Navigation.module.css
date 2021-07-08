@@ -29,6 +29,10 @@
   font-size: 5rem;
 }
 
+.tmdblogo {
+  width: 6rem;
+}
+
 .main__nav {
   display: flex;
   justify-content: center;
