@@ -13,7 +13,7 @@ const useSearch = (query, pageNumber) => {
   }, [query]);
 
   useEffect(() => {
-    const personUrl = `https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`;
+    const personUrl = `https://api.themoviedb.org/3/search/person?api_key=568d70d9321d73f65ec37dc872130204&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`;
 
     const getPersonResult = async () => {
       const datas = await getJSON(personUrl);

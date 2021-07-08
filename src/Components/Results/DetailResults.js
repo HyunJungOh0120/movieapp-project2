@@ -19,9 +19,9 @@ const DetailResults = () => {
   const [recommends, setRecommends] = useState([]);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,images`;
-    const castUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-    const recommendUrl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=568d70d9321d73f65ec37dc872130204&append_to_response=videos,images`;
+    const castUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=568d70d9321d73f65ec37dc872130204&language=en-US`;
+    const recommendUrl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=568d70d9321d73f65ec37dc872130204&language=en-US`;
 
     const getMovieDetail = async () => {
       try {
@@ -42,7 +42,7 @@ const DetailResults = () => {
   }, [id]);
 
   useEffect(() => {
-    const omdbUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&i=${details.imdb_id}`;
+    const omdbUrl = `http://www.omdbapi.com/?apikey=e54431d3&i=${details.imdb_id}`;
 
     const getOmdbDetail = async () => {
       try {

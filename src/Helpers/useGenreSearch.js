@@ -11,7 +11,7 @@ const useGenreSearch = (genreId, pageNumber) => {
   }, [genreId]);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=568d70d9321d73f65ec37dc872130204&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
     const getResults = async () => {
       setLoading(true);
       try {

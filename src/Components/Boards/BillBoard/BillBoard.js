@@ -23,7 +23,7 @@ const BillBoard = ({ billBoard }) => {
 
     const getInfo = async () => {
       try {
-        const infoUrl = ` https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
+        const infoUrl = ` https://api.themoviedb.org/3/movie/${id}?api_key=568d70d9321d73f65ec37dc872130204&append_to_response=videos`;
 
         const data = await getJSON(infoUrl);
 
