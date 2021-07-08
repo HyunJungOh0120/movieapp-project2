@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { getJSON } from './Helpers';
 
 const useSearch = (query, pageNumber) => {
-  const controller = new AbortController();
-  const { signal } = controller;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [results, setResults] = useState([]);
@@ -18,7 +16,7 @@ const useSearch = (query, pageNumber) => {
     const personUrl = `https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`;
 
     const getPersonResult = async () => {
-      const datas = await getJSON(personUrl, signal);
+      const datas = await getJSON(personUrl);
 
       const personResult = datas.results;
 
@@ -65,10 +63,6 @@ const useSearch = (query, pageNumber) => {
       setPersonResult(newFiltered);
     };
     getPersonResult();
-
-    return () => {
-      setTimeout(() => controller.abort(), 4000);
-    };
   }, [query]);
 
   useEffect(() => {
@@ -77,7 +71,7 @@ const useSearch = (query, pageNumber) => {
     const getResults = async () => {
       setLoading(true);
       try {
-        const data = await getJSON(url, signal);
+        const data = await getJSON(url);
 
         setResults((prevResults) => [
           ...new Set([...prevResults, ...data.results]),
@@ -90,9 +84,6 @@ const useSearch = (query, pageNumber) => {
       }
     };
     getResults();
-    return () => {
-      setTimeout(() => controller.abort(), 4000);
-    };
   }, [query, pageNumber]);
 
   return { loading, error, results, hasMore, personResult };

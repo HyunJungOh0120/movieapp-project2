@@ -20,13 +20,12 @@ const BillBoard = ({ billBoard }) => {
 
   useEffect(() => {
     const id = billBoard.id;
-    const controller = new AbortController();
-    const { signal } = controller;
+
     const getInfo = async () => {
       try {
         const infoUrl = ` https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
 
-        const data = await getJSON(infoUrl, signal);
+        const data = await getJSON(infoUrl);
 
         setVideoKey(data.videos.results[0].key);
       } catch (error) {
@@ -35,11 +34,6 @@ const BillBoard = ({ billBoard }) => {
       }
     };
     getInfo();
-    return () => {
-      setTimeout(() => {
-        controller.abort();
-      }, 4000);
-    };
   }, [billBoard]);
 
   const imgUrl = backdropPath
