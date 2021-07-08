@@ -1,27 +1,115 @@
 .detailResults {
   background: var(--beigeWhite);
   color: var(--main-black);
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: min-content 80rem 1fr;
+  width: 80%;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .section {
-  padding: 1rem;
+  padding: 2rem;
+  display: block;
 }
 
 .section__1 {
-  composes: section;
-  background-color: khaki;
+  padding: 2rem;
+  display: flex;
+
+  height: 40rem;
+}
+
+.movieTitle {
+  font-size: 5rem;
+}
+
+.section__1 article {
+  background-color: white;
+  padding: 0.4rem 0.7rem;
+  margin-top: 1rem;
+}
+
+.section__1 article h3 {
+  color: rgb(61, 61, 61);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.section__1 article p {
+  font-size: 1.4rem;
 }
 
 .section__2 {
   composes: section;
-  background-color: lightcoral;
 }
 
 .section__3 {
   composes: section;
   background-color: lightseagreen;
+}
+
+.posterBox {
+  height: 100%;
+  width: 30rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 2rem;
+}
+
+.posterBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ratingBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ratingBox div {
+  background-color: var(--main-black);
+  color: var(--orange);
+  width: 16rem;
+  text-align: center;
+  height: 12rem;
+  display: grid;
+  padding: 2rem;
+  grid-template-rows: 2fr 1fr;
+  margin-right: 2rem;
+}
+
+.ratingBox p:nth-child(1) {
+  font-size: 3rem;
+}
+.ratingBox p:last-child {
+  font-size: 1.2rem;
+  color: var(--beigeWhite);
+}
+
+.section__2 h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.storyLine {
+  background-color: white;
+  padding: 2rem;
+}
+
+.castBox {
+  background-color: var(--main-black);
+  color: antiquewhite;
 }

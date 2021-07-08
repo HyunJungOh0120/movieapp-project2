@@ -1,0 +1,24 @@
+.castBox {
+  width: 18rem;
+  display: grid;
+  flex-direction: column;
+
+  grid-template-rows: 8fr 1fr 1fr;
+  margin: 0 0.2rem;
+}
+
+.profile {
+  display: inline-block;
+  width: 100%;
+  border-radius: 9px;
+}
+
+.castBox p {
+  color: rgb(247, 247, 247);
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+.castBox p:last-child {
+  color: rgb(182, 182, 182);
+}
