@@ -26,7 +26,7 @@ const BillBoard = ({ billBoard }) => {
       try {
         const infoUrl = ` https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
 
-        const data = await getJSON(infoUrl, { signal });
+        const data = await getJSON(infoUrl, signal);
 
         setVideoKey(data.videos.results[0].key);
       } catch (error) {
@@ -36,7 +36,9 @@ const BillBoard = ({ billBoard }) => {
     };
     getInfo();
     return () => {
-      controller.abort();
+      setTimeout(() => {
+        controller.abort();
+      }, 4000);
     };
   }, [billBoard]);
 
@@ -51,7 +53,7 @@ const BillBoard = ({ billBoard }) => {
   const addClickHandler = () => {
     console.log('Added');
   };
-
+  console.log(videoKey);
   return (
     <div className={styles.billBoard}>
       <Video

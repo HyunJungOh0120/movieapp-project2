@@ -71,7 +71,6 @@ const DetailResults = () => {
   const imgUrl = details.poster_path
     ? `${IMG_URL}${IMG_W500_SIZE}${details.poster_path}`
     : ``;
-  console.log(details);
 
   return (
     <div className={styles.detailResults}>

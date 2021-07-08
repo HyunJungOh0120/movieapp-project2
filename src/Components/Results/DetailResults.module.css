@@ -5,6 +5,8 @@
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .section {
@@ -14,10 +16,12 @@
 .section__1 {
   composes: section;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 44rem;
   background-color: var(--main-black);
   color: var(--beigeWhite);
+  width: 100%;
+  padding: 0 4rem;
 }
 
 .movieTitle {
@@ -30,7 +34,7 @@
 }
 
 .section__1 article h3 {
-  color: rgb(61, 61, 61);
+  color: var(--orange);
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }

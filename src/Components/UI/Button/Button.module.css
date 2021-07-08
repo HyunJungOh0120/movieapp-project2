@@ -14,7 +14,9 @@
 }
 
 .button:active,
-.button:hover {
+.button:hover,
+.button:focus {
   transform: scale(0.96);
   background: var(--buttonActiveBackground);
+  color: var(--beigeWhite);
 }
