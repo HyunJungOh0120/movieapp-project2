@@ -25,7 +25,7 @@ const useSearch = (query, pageNumber) => {
       const persons = personResult.map((person) => {
         return { name: person.name, known_for: person.known_for };
       });
-
+      // filter tv
       const filtered = persons
         .map((person) => {
           return {
@@ -37,7 +37,32 @@ const useSearch = (query, pageNumber) => {
         })
         .filter((person) => person.known_for.length > 0);
 
-      setPersonResult(filtered);
+      // filter same name
+
+      let i = 0,
+        j = filtered.length - 1,
+        current;
+
+      const newFiltered = [...filtered];
+      for (; i < newFiltered.length; i++) {
+        current = newFiltered[i];
+        for (; j > i; j--) {
+          if (current.name === newFiltered[j].name) {
+            if (Array.isArray(current.known_for)) {
+              current.known_for = current.known_for.concat([
+                ...newFiltered[j].known_for,
+              ]);
+            } else {
+              current.known_for = [].concat([
+                newFiltered[j].known_for,
+                current.known_for,
+              ]);
+            }
+            newFiltered.splice(j, 1);
+          }
+        }
+      }
+      setPersonResult(newFiltered);
     };
     getPersonResult();
 
@@ -53,7 +78,7 @@ const useSearch = (query, pageNumber) => {
       setLoading(true);
       try {
         const data = await getJSON(url, signal);
-        console.log('movie', data.results);
+
         setResults((prevResults) => [
           ...new Set([...prevResults, ...data.results]),
         ]);

@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# 🍿 Movie Info App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple movie info & search app built with HTML, CSS Module, React.js
 
-## Available Scripts
+## 🌼 Introduction
 
-In the project directory, you can run:
+This is a movie app where you can search the movie title or movie casts/credits and get some details on movie.
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+There are total 4 pages.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Home (/browse)
+  - The webpage fetches the date on popular movies then populates the slider with a selection of movies.
+  - Every 4 seconds a movie from this selection is randomly selected and displayed in the background.
+  - Below the slider, 5 randomly selected genres are displayed in sliders.
+  - By clicking on a movie, the user is directed to the movie's full information page.
+- Genre (/genre)
+  - In the genre section, movies are grouped and displayed based on their genre.
+  - By clicking on a movie, the user is directed to the movie's full information page
+- Search (/search)
+  -The user can search a movie via the search bar in the navigation bar. Movies can be searched by title or cast member's name.
+- Detail (/detail)
 
-### `npm test`
+## 🎨 Visuals
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```python
+import foobar
 
-### `npm run build`
+# returns 'words'
+foobar.pluralize('word')
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# returns 'geese'
+foobar.pluralize('goose')
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# returns 'phenomenon'
+foobar.singularize('phenomena')
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `npm run eject`
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Please make sure to update tests as appropriate.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://choosealicense.com/licenses/mit/)

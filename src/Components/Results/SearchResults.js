@@ -17,6 +17,7 @@ const SearchResults = () => {
     query,
     pageNumber
   );
+  console.log(personResult);
 
   const observer = useRef();
   const lastResultRef = useCallback(
@@ -34,8 +35,6 @@ const SearchResults = () => {
     },
     [loading, hasMore]
   );
-
-  console.log(personResult);
 
   return (
     <Page>
@@ -58,15 +57,16 @@ const SearchResults = () => {
         {personResult.length === 1 && (
           <>
             {personResult[0].known_for.map((movie) => {
-              return (
-                <Poster
-                  posterPath={movie.poster_path}
-                  title={movie.title}
-                  id={movie.id}
-                  key={movie.id}
-                  size="big"
-                />
-              );
+              if (movie.poster_path)
+                return (
+                  <Poster
+                    posterPath={movie.poster_path}
+                    title={movie.title}
+                    id={movie.id}
+                    key={movie.id}
+                    size="big"
+                  />
+                );
             })}
           </>
         )}
