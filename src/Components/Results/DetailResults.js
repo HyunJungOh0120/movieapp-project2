@@ -47,7 +47,7 @@ const DetailResults = () => {
       }, 4000);
     };
   }, [id]);
-  console.log(details);
+  console.log(casts);
   useEffect(() => {
     const omdbUrl = `http://www.omdbapi.com/?apikey=e54431d3&i=${details.imdb_id}`;
 

@@ -42,6 +42,7 @@ const CastPaginator = ({ dataArr }) => {
               character={content.character}
               profile_path={content.profile_path}
               key={content.id}
+              gender={+content.gender}
             />
           );
         })}
