@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useMain } from '../MainProvider';
 import styles from './Genre.module.css';
 
@@ -11,9 +12,11 @@ const Genre = ({ mediaGenre }) => {
       mediaGenre.includes(genre.id)
     );
     return currGenreArray.map((genre) => (
-      <p className={styles.genre} key={genre.id}>
-        {genre.name}
-      </p>
+      <Link to={`/genre?genre=${genre.id}`}>
+        <p className={styles.genre} key={genre.id}>
+          {genre.name}
+        </p>
+      </Link>
     ));
   };
 
