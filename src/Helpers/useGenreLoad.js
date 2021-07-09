@@ -4,6 +4,8 @@ import { getListByGenreUrl } from './Urls';
 
 const useGenreLoad = (mediaType, genresList, contextStatus) => {
   // movieGenres [{id, name},{...}...]  []
+  const controller = new AbortController();
+  const { signal } = controller;
   const [listStatus, setListStatus] = useState('idle');
   const [lists, setLists] = useState([]);
   useEffect(() => {
@@ -18,7 +20,7 @@ const useGenreLoad = (mediaType, genresList, contextStatus) => {
           getListByGenreUrl(mediaType, genresList[index].id)
         ); //[url,url,url]
         const data = await Promise.all([
-          ...randomUrls.map((url) => getJSON(url)),
+          ...randomUrls.map((url) => getJSON(url, signal)),
         ]);
         const results = data.map((data) => data.results);
 
@@ -30,6 +32,11 @@ const useGenreLoad = (mediaType, genresList, contextStatus) => {
       }
     };
     getLists();
+    return () => {
+      setTimeout(() => {
+        controller.abort();
+      }, 4000);
+    };
   }, [contextStatus]);
 
   return { listStatus, lists };

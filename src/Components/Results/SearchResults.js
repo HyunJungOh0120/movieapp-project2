@@ -69,6 +69,24 @@ const SearchResults = () => {
             })}
           </>
         )}
+        {personResult.length > 1 && (
+          <>
+            {personResult.map((person) => {
+              return person.known_for.map((movie) => {
+                if (movie.poster_path)
+                  return (
+                    <Poster
+                      posterPath={movie.poster_path}
+                      title={movie.title}
+                      id={movie.id}
+                      key={Math.random()}
+                      size="big"
+                    />
+                  );
+              });
+            })}
+          </>
+        )}
 
         {results.length > 0 && (
           <>
@@ -97,6 +115,11 @@ const SearchResults = () => {
                 );
               }
             })}
+          </>
+        )}
+        {results.length === 0 && personResult.length === 0 && (
+          <>
+            <div> Oops! No results..</div>
           </>
         )}
         {/* {results.length === 0 && <Card>No results..</Card>} */}

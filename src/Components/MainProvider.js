@@ -9,6 +9,8 @@ const setMediaType = (list, mediaType) => {
   list.forEach((el) => (el.mediaType = mediaType));
 };
 function MainProvider({ children }) {
+  const controller = new AbortController();
+  const { signal } = controller;
   const [movieGenres, setMovieGenres] = useState([]);
   const [moviePopulars, setMoviePopulars] = useState({ list: '', title: '' });
   const [status, setStatus] = useState('idle');
@@ -20,7 +22,7 @@ function MainProvider({ children }) {
       try {
         setStatus('loading');
         const urls = [movieGenreUrl, moviePopularUrl];
-        const data = await Promise.all(urls.map((url) => getJSON(url)));
+        const data = await Promise.all(urls.map((url) => getJSON(url, signal)));
 
         setMediaType(data[1].results, 'movie');
         setMovieGenres(data[0].genres);
@@ -34,6 +36,12 @@ function MainProvider({ children }) {
       }
     };
     getInitialData();
+
+    return () => {
+      setTimeout(() => {
+        controller.abort();
+      }, 4000);
+    };
   }, []);
 
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;

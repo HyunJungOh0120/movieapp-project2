@@ -11,6 +11,8 @@ import styles from './DetailResults.module.css';
 const genreIds = (arr) => arr.map((genre) => genre.id);
 
 const DetailResults = () => {
+  const controller = new AbortController();
+  const { signal } = controller;
   const { search } = useLocation();
   const { id } = queryString.parse(search);
   const [details, setDetails] = useState({});
@@ -26,9 +28,9 @@ const DetailResults = () => {
     const getMovieDetail = async () => {
       try {
         const data = await Promise.all([
-          getJSON(url),
-          getJSON(castUrl),
-          getJSON(recommendUrl),
+          getJSON(url, signal),
+          getJSON(castUrl, signal),
+          getJSON(recommendUrl, signal),
         ]);
 
         setDetails(data[0]);
@@ -39,6 +41,12 @@ const DetailResults = () => {
       }
     };
     getMovieDetail();
+
+    return () => {
+      setTimeout(() => {
+        controller.abort();
+      }, 4000);
+    };
   }, [id]);
 
   useEffect(() => {
@@ -46,7 +54,7 @@ const DetailResults = () => {
 
     const getOmdbDetail = async () => {
       try {
-        const data = await getJSON(omdbUrl);
+        const data = await getJSON(omdbUrl, signal);
 
         setOmdbDetails(data);
       } catch (error) {
@@ -54,6 +62,12 @@ const DetailResults = () => {
       }
     };
     getOmdbDetail();
+
+    return () => {
+      setTimeout(() => {
+        controller.abort();
+      }, 4000);
+    };
   }, [details]);
 
   const imgUrl = details.poster_path

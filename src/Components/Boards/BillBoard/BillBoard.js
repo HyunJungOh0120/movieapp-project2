@@ -10,6 +10,8 @@ import styles from './BillBoard.module.css';
 import Buttons from './Buttons';
 
 const BillBoard = ({ billBoard }) => {
+  const controller = new AbortController();
+  const { signal } = controller;
   const [isClicked, setIsClicked] = useState(false);
   // console.log(billBoard);
   const [videoKey, setVideoKey] = useState('');
@@ -25,7 +27,7 @@ const BillBoard = ({ billBoard }) => {
       try {
         const infoUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=568d70d9321d73f65ec37dc872130204&append_to_response=videos`;
 
-        const data = await getJSON(infoUrl);
+        const data = await getJSON(infoUrl, signal);
 
         setVideoKey(data.videos.results[0].key);
       } catch (error) {
@@ -34,6 +36,11 @@ const BillBoard = ({ billBoard }) => {
       }
     };
     getInfo();
+    return () => {
+      setTimeout(() => {
+        controller.abort();
+      }, 4000);
+    };
   }, [billBoard]);
 
   const imgUrl = backdropPath
