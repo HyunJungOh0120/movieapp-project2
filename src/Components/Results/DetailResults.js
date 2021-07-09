@@ -47,7 +47,7 @@ const DetailResults = () => {
       }, 4000);
     };
   }, [id]);
-
+  console.log(details);
   useEffect(() => {
     const omdbUrl = `http://www.omdbapi.com/?apikey=e54431d3&i=${details.imdb_id}`;
 
@@ -105,10 +105,11 @@ const DetailResults = () => {
           <article>
             <h3>Director</h3>
             <p>{omdbDetails.Director && omdbDetails.Director}</p>
+            <p>{!omdbDetails.Director && 'No director Info..'}</p>
           </article>
         </div>
         <div className={styles.videoBox}>
-          {details.videos && (
+          {details?.videos?.results.length > 0 && (
             <iframe
               width="400"
               height="210"
