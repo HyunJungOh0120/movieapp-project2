@@ -1,3 +1,10 @@
 .listBoard {
   height: 100vh;
 }
+
+.listBoard h2 {
+  font-size: 4rem;
+  align-self: flex-start;
+  color: var(--orange);
+  font-weight: 300;
+}
