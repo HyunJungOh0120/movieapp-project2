@@ -5,7 +5,6 @@ import { getJSON, IMG_URL, IMG_W500_SIZE } from '../../Helpers/Helpers';
 import Genre from '../Genre/Genre';
 import CastPaginator from '../Paginator/CastPaginator';
 import Paginator from '../Paginator/Paginator';
-
 import styles from './DetailResults.module.css';
 
 const genreIds = (arr) => arr.map((genre) => genre.id);
@@ -78,18 +77,22 @@ const DetailResults = () => {
     <div className={styles.detailResults}>
       <section className={styles.section__1}>
         <div className={styles.posterBox}>
-          <img src={details.poster_path ? imgUrl : ''} alt="poster" />
+          <img
+            src={details.poster_path && omdbDetails.Poster && imgUrl}
+            alt="poster"
+          />
         </div>
         <div className={styles.infoCard}>
           <h2 className={styles.movieTitle}>
-            {details.title ? details.title : 'title'}
+            {details.title && details.title}
+            {!details.title && omdbDetails.Title}
           </h2>
-          <h3>
-            {details.original_title ? details.original_title : 'Original Title'}
-          </h3>
+          <h3>{details.original_title && details.original_title}</h3>
           <article>
             <h3>Genre</h3>
             {details.genres && <Genre mediaGenre={genreIds(details.genres)} />}
+            {!details.genres && omdbDetails.Genre && <p>{omdbDetails.Genre}</p>}
+            {!details.genres && !omdbDetails.Genre && <p>No Info..</p>}
           </article>
           <article>
             <h3>Release Date</h3>
@@ -134,12 +137,26 @@ const DetailResults = () => {
               })}
             </div>
           )}
+          {!omdbDetails.Ratings && details.vote_average && (
+            <div className={styles.ratingBox}>
+              <p>{details.vote_average}</p>
+            </div>
+          )}
+          {!omdbDetails.Ratings && !details.vote_average && (
+            <div className={styles.ratingBox}>
+              <p>No ratings..</p>
+            </div>
+          )}
         </div>
 
         <div>
           <h2>StoryLine</h2>
           <div className={styles.storyLine}>
             {details.overview && <p>{details.overview}</p>}
+            {!details.overview && <p>{omdbDetails.plot}</p>}
+            {!details.overview && !omdbDetails.plot && (
+              <p>Sorry, no story lines..</p>
+            )}
           </div>
         </div>
 
@@ -147,6 +164,7 @@ const DetailResults = () => {
           <h2>Casts</h2>
           <div className={styles.row}>
             {casts && <CastPaginator dataArr={casts} />}
+            {!casts && <p>Sorry, No casts information..</p>}
           </div>
         </div>
 
@@ -155,6 +173,7 @@ const DetailResults = () => {
           <div className={styles.row}>
             {recommends && <Paginator dataArr={recommends} size="big" />}
             {recommends.length === 0 && <div>No recommendations.. Sorry!</div>}
+            {!recommends && <p>No recommendations..</p>}
           </div>
         </div>
       </section>
