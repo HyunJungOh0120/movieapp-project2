@@ -3,9 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IMG_URL, IMG_W500_SIZE } from '../../Helpers/Helpers';
 import styles from './Poster.module.css';
+import noPoster from './noposter.jpg';
 
 const Poster = ({ posterPath, title, size = 'small', id }) => {
-  const imgUrl = posterPath ? `${IMG_URL}${IMG_W500_SIZE}${posterPath}` : ``;
+  const imgUrl = posterPath
+    ? `${IMG_URL}${IMG_W500_SIZE}${posterPath}`
+    : noPoster;
 
   const className = size === 'big' ? styles.poster : styles.smallPoster;
 
