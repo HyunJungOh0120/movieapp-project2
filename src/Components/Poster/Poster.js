@@ -12,7 +12,9 @@ const Poster = ({ posterPath, title, size = 'small', id }) => {
   return (
     <Link to={`/detail?id=${id}`}>
       <div className={className}>
-        <img src={imgUrl} alt={title} id={id} />
+        <div className={styles.imgBox}>
+          <img src={imgUrl} alt={title} id={id} />
+        </div>
         <p>{title}</p>
       </div>
     </Link>

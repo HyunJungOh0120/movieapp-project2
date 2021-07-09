@@ -6,20 +6,26 @@
   margin: 0 0.6rem;
   cursor: pointer;
   background-color: rgba(41, 41, 41, 0.349);
-  background-image: url('./green.jpg');
+
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: centers;
+  justify-content: flex-start;
 }
 
 .poster p {
   text-align: center;
 }
 
-.poster img {
-  position: absolute;
+.poster .imgBox {
+  background: url('./green.jpg');
   background-position: center center;
   background-size: cover;
+  width: 100%;
+}
+
+.poster img {
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -37,20 +43,27 @@
 
 .smallPoster {
   composes: poster;
-  background: url('./green.jpg');
   width: 20rem;
 }
 
-.smallPoster img {
+.smallPoster .imgBox {
+  background-position: center center;
+  background-size: cover;
+  background: url('./green.jpg');
+  height: 11.5rem;
   width: 20rem;
-  height: 13rem;
-  object-fit: cover;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+
+.smallPoster img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .smallPoster p {
   color: white;
   font-size: 1.6rem;
-
-  position: absolute;
-  bottom: -30%;
 }
