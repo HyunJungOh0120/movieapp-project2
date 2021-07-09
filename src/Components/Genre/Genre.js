@@ -12,10 +12,8 @@ const Genre = ({ mediaGenre }) => {
       mediaGenre.includes(genre.id)
     );
     return currGenreArray.map((genre) => (
-      <Link to={`/genre?genre=${genre.id}`}>
-        <p className={styles.genre} key={genre.id}>
-          {genre.name}
-        </p>
+      <Link to={`/genre?genre=${genre.id}`} key={genre.id}>
+        <p className={styles.genre}>{genre.name}</p>
       </Link>
     ));
   };
