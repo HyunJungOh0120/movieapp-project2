@@ -21,8 +21,7 @@ Simple movie info & search app built with HTML, CSS Module, React.js
 
 ---
 
-This is a movie app where you can search the movie title or movie casts/credits and get some details on movie. I love netflix, but sometimes, I wanted to just see the main posters instead of auto played trailers on netflix. I love amazon prime as well, especially 'searching on watching' is the best part of it.
-So I can't provide streaming service but this web app will provide the official trailers, and whatever the images we click, the search results will be displayed.
+This is a 'Movie Info' web app which provides some detailed info about movie or creadits of movie. Simplified web app where the user can search and click any movie posters to gain some information about chosen movies, or any credits' profile pictures to see the list of the movie where these credits were acting. Also, user can sort out the movies by clicking different genre buttons.
 
 ## 🚀 Features
 
