@@ -49,7 +49,7 @@ const DetailResults = () => {
   }, [id]);
 
   useEffect(() => {
-    const omdbUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&i=${details.imdb_id}`;
+    const omdbUrl = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&i=${details.imdb_id}`;
 
     const getOmdbDetail = async () => {
       try {
@@ -74,6 +74,7 @@ const DetailResults = () => {
     : ``;
 
   console.log(omdbDetails.Ratings);
+  console.log(details.imdb_id);
 
   return (
     <div className={styles.detailResults}>
