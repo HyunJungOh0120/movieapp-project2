@@ -77,10 +77,7 @@ const DetailResults = () => {
     <div className={styles.detailResults}>
       <section className={styles.section__1}>
         <div className={styles.posterBox}>
-          <img
-            src={details.poster_path && omdbDetails.Poster && imgUrl}
-            alt="poster"
-          />
+          <img src={details.poster_path && imgUrl} alt="poster" />
         </div>
         <div className={styles.infoCard}>
           <h2 className={styles.movieTitle}>
