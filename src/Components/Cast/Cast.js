@@ -18,7 +18,7 @@ const Cast = ({ id, name, character, profile_path, gender }) => {
       return womanPic;
     }
   };
-  console.log(profilePath(profile_path));
+
   return (
     <div id={id} className={styles.castBox}>
       <Link to={`/search?query=${name}`}>

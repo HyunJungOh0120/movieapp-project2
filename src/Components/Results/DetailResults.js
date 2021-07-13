@@ -47,7 +47,7 @@ const DetailResults = () => {
       }, 4000);
     };
   }, [id]);
-  console.log(casts);
+
   useEffect(() => {
     const omdbUrl = `http://www.omdbapi.com/?apikey=e54431d3&i=${details.imdb_id}`;
 
@@ -77,7 +77,10 @@ const DetailResults = () => {
     <div className={styles.detailResults}>
       <section className={styles.section__1}>
         <div className={styles.posterBox}>
-          <img src={details.poster_path && imgUrl} alt="poster" />
+          <img
+            src={(details.poster_path && imgUrl) || omdbDetails.Poster}
+            alt="poster"
+          />
         </div>
         <div className={styles.infoCard}>
           <h2 className={styles.movieTitle}>
