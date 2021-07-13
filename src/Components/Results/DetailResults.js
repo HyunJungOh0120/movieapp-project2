@@ -90,9 +90,9 @@ const DetailResults = () => {
           <h3>{details.original_title && details.original_title}</h3>
           <article>
             <h3>Genre</h3>
-            {details.genres && <Genre mediaGenre={genreIds(details.genres)} />}
-            {!details.genres && omdbDetails.Genre && <p>{omdbDetails.Genre}</p>}
-            {!details.genres && !omdbDetails.Genre && <p>No Info..</p>}
+            {(details.genres && (
+              <Genre mediaGenre={genreIds(details.genres)} />
+            )) || <p>{omdbDetails.Genre}</p> || <p>No Info..</p>}
           </article>
           <article>
             <h3>Release Date</h3>
