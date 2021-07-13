@@ -73,7 +73,7 @@ const DetailResults = () => {
     ? `${IMG_URL}${IMG_W500_SIZE}${details.poster_path}`
     : ``;
 
-  console.log(details.genres);
+  console.log(omdbDetails.Ratings);
 
   return (
     <div className={styles.detailResults}>
@@ -128,7 +128,7 @@ const DetailResults = () => {
       <section className={styles.section__2}>
         <div>
           <h2>Rating</h2>
-          {omdbDetails.Ratings && (
+          {(omdbDetails.Ratings && (
             <div className={styles.ratingBox}>
               {omdbDetails.Ratings.map((rating, index) => {
                 return (
@@ -139,17 +139,15 @@ const DetailResults = () => {
                 );
               })}
             </div>
-          )}
-          {!omdbDetails.Ratings && details.vote_average && (
-            <div className={styles.ratingBox}>
-              <p>{details.vote_average}</p>
-            </div>
-          )}
-          {!omdbDetails.Ratings && !details.vote_average && (
-            <div className={styles.ratingBox}>
-              <p>No ratings..</p>
-            </div>
-          )}
+          )) || (
+              <div className={styles.ratingBox}>
+                <p>{details.vote_average}</p>
+              </div>
+            ) || (
+              <div className={styles.ratingBox}>
+                <p>No ratings..</p>
+              </div>
+            )}
         </div>
 
         <div>
