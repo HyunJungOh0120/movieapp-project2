@@ -73,6 +73,8 @@ const DetailResults = () => {
     ? `${IMG_URL}${IMG_W500_SIZE}${details.poster_path}`
     : ``;
 
+  console.log(details.genres);
+
   return (
     <div className={styles.detailResults}>
       <section className={styles.section__1}>
