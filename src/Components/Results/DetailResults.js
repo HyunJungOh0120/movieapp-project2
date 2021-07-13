@@ -73,9 +73,6 @@ const DetailResults = () => {
     ? `${IMG_URL}${IMG_W500_SIZE}${details.poster_path}`
     : ``;
 
-  console.log(omdbDetails.Ratings);
-  console.log(details.imdb_id);
-
   return (
     <div className={styles.detailResults}>
       <section className={styles.section__1}>
