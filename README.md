@@ -8,7 +8,7 @@ Simple movie info & search app built with HTML, CSS Module, React.js
 
 ## Table of contents
 
----
+
 
 - [Introduction](#Introduction)
 - [Features](#Features)
@@ -19,13 +19,13 @@ Simple movie info & search app built with HTML, CSS Module, React.js
 
 ## 🌼 Introduction
 
----
+
 
 This is a 'Movie Info' web app which provides some detailed info about movie or creadits of movie. Simplified web app where the user can search and click any movie posters to gain some information about chosen movies, or any credits' profile pictures to see the list of the movie where these credits were acting. Also, user can sort out the movies by clicking different genre buttons.
 
 ## 🚀 Features
 
----
+
 
 There are total 4 pages.
 
@@ -67,7 +67,7 @@ There are total 4 pages.
 
 ## 🎨 Visuals
 
----
+
 
 ![Home](/ReadmeImages/main.gif)
 
@@ -79,7 +79,7 @@ There are total 4 pages.
 
 ## Challenging part
 
----
+
 
 ⓵ Search
 
@@ -96,7 +96,7 @@ There are total 4 pages.
 
 ## 💻 Technologies
 
----
+
 
 Project is created with:
 
